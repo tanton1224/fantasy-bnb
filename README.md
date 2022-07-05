@@ -348,7 +348,7 @@ Creates and returns a new spot.
 * Require Authentication: true
 * Request
   * Method: POST
-  * URL: /:spotid OR /spots/:spotid
+  * URL: /spots/:spotid
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -423,7 +423,7 @@ Updates and returns an existing spot.
 * Require proper authorization: Spot must belong to the current user
 * Request
   * Method: PUT
-  * URL: /:spotid or /spots/:spotid
+  * URL: /spots/:spotid
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -511,7 +511,7 @@ Deletes an existing spot.
 * Require proper authorization: Spot must belong to the current user
 * Request
   * Method: DELETE
-  * URL: /:spotid OR /spots/:spotid
+  * URL: /spots/:spotid
   * Body: none
 
 * Successful Response
@@ -599,7 +599,7 @@ Returns all the reviews that belong to a spot specified by id.
 * Require Authentication: false
 * Request
   * Method: GET
-  * URL: /:spotid/reviews OR /spots/:spotid/reviews
+  * URL: /reviews/spot/:spotId
   * Body: none
 
 * Successful Response
@@ -652,7 +652,7 @@ Create and return a new review for a spot specified by id.
 * Require Authentication: true
 * Request
   * Method: POST
-  * URL: /:spotid/reviews OR /spots/:spotid/reviews
+  * URL: /reviews/spot/:spotId
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -733,7 +733,7 @@ Update and return an existing review.
 * Require proper authorization: Review must belong to the current user
 * Request
   * Method: PUT
-  * URL: /:spotid/reviews/:reviewid OR /spots/:spotid/reviews/:reviewid
+  * URL: /reviews/:reviewId
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -801,7 +801,7 @@ Delete an existing review.
 * Require proper authorization: Review must belong to the current user
 * Request
   * Method: DELETE
-  * URL: /:spotid/reviews/:reviewid OR /spots/:spotid/reviews/:reviewid
+  * URL: /reviews/:reviewId
   * Body: none
 
 * Successful Response
@@ -837,7 +837,7 @@ Return all the bookings that the current user has made.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: /profile/bookings
+  * URL: /spots/:spotId/bookings
   * Body: none
 
 * Successful Response
@@ -882,7 +882,7 @@ Return all the bookings for a spot specified by id.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: /:spotid/bookings OR /spots/:spotid/bookings
+  * URL: /bookings/spot/:spotId
   * Body: none
 
 * Successful Response: If you ARE NOT the owner of the spot.
@@ -951,7 +951,7 @@ Create and return a new booking from a spot specified by id.
 * Require proper authorization: Spot must NOT belong to the current user
 * Request
   * Method: POST
-  * URL: /:spotid/bookings OR /spots/:spotid/bookings
+  * URL: /bookings/spot/:spotId
   * Body:
 
     ```json
@@ -1033,7 +1033,7 @@ Update and return an existing booking.
 * Require proper authorization: Booking must belong to the current user
 * Request
   * Method: PUT
-  * URL: /:spotid/bookings/:bookingid OR /spots/:spotid/bookings/:bookingid
+  * URL: /bookings/:bookingId
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -1131,7 +1131,7 @@ Delete an existing booking.
   Spot must belong to the current user
 * Request
   * Method: DELETE
-  * URL: /:spotid/bookings/:bookingid OR /spots/:spotid/bookings/:bookingid
+  * URL: /bookings/:bookingId
   * Body: none
 
 * Successful Response
@@ -1181,7 +1181,7 @@ Create and return a new image for a spot specified by id.
 * Require proper authorization: Spot must belong to the current user
 * Request
   * Method: POST
-  * URL: /:spotid/images OR /spots/:spotid/images
+  * URL: /spots/:spotid/images
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -1228,7 +1228,7 @@ Create and return a new image for a review specified by id.
 * Require proper authorization: Review must belong to the current user
 * Request
   * Method: POST
-  * URL: /:spotid/reviews/images OR /spots/:spotid/reviews/images
+  * URL: /reviews/:reviewId/images
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -1290,7 +1290,7 @@ Delete an existing image.
   the image's imageableId and imageableType
 * Request
   * Method: DELETE
-  * URL: /:spotid/reviews/images OR /spots/:spotid/reviews/images
+  * URL: /images/:imageId
   * Body: none
 
 * Successful Response
