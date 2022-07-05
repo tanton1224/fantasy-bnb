@@ -213,7 +213,7 @@ Returns all the spots.
 * Require Authentication: false
 * Request
   * Method: GET
-  * URL: / (current layout of airbnb displays all on homepage), alternatively /spots ?
+  * URL: /spots
   * Body: none
 
 * Successful Response
@@ -291,7 +291,7 @@ Returns the details of a spot specified by its id.
 * Require Authentication: false
 * Request
   * Method: GET
-  * URL: /:spotid OR /spots/:spotid
+  * URL: /spots/:spotid
   * Body: none
 
 * Successful Response
@@ -348,7 +348,7 @@ Creates and returns a new spot.
 * Require Authentication: true
 * Request
   * Method: POST
-  * URL: /spots/:spotid
+  * URL: /spots
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -837,7 +837,7 @@ Return all the bookings that the current user has made.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: /spots/:spotId/bookings
+  * URL: /bookings/user/:userId
   * Body: none
 
 * Successful Response
