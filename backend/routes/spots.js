@@ -7,6 +7,7 @@ const { handleValidationErrors } = require('../utils/validation');
 
 const router = express.Router();
 
+let errorsObj = {}
 
 router.get(
   '/:spotId',
@@ -16,6 +17,12 @@ router.get(
     const spotId = req.params.spotId
 
     const spotById = await Spot.findByPk(spotId)
+
+    if (!spotById) {
+      errorsObj.message = "Spot couldn't be found"
+      errorsObj.statusCode = 404
+      return res.json(errorsObj)
+    }
 
     res.json(spotById)
   }
