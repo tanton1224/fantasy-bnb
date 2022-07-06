@@ -29,10 +29,24 @@ module.exports = (sequelize, DataTypes) => {
     startDate: {
       type: DataTypes.DATE,
       allowNull: false,
+      validate: {
+        isNotTodayOrInThePast(value) {
+          if (new Date(value) < new Date()) {
+            throw new Error('Please choose a day after today');
+          }
+        }
+      }
     },
     endDate: {
       type: DataTypes.DATE,
       allowNull: false,
+      validate: {
+        isAfterStartDate(value) {
+          if (new Date(value) < new Date(this.startDate)) {
+            throw new Error('End date cannot be before start date')
+          }
+        }
+      }
     },
     userId: {
       type: DataTypes.INTEGER,
