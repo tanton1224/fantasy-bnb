@@ -1,6 +1,6 @@
 const express = require('express')
 
-const { setTokenCookie, restoreUser } = require('../utils/auth');
+const { setTokenCookie, restoreUser, requireAuth } = require('../utils/auth');
 const { User, Spot, Review, Image, Booking } = require('../db/models');
 const { check, validationResult, Result } = require('express-validator');
 const { handleValidationErrors, validateSpotCreation } = require('../utils/validation');
@@ -19,6 +19,7 @@ router.get(
     if (!spotById) {
       err.message = "Spot couldn't be found";
       err.statusCode = 404;
+      res.statusCode = 404;
       return res.json(err);
     }
 
@@ -29,10 +30,28 @@ router.get(
 router.put(
   '/:spotId',
   validateSpotCreation,
+  requireAuth,
   async (req, res, next) => {
     const spotId = req.params.spotId
 
     const spotById = await Spot.findByPk(spotId)
+
+    if (!spotById) {
+      let err = {}
+      err.message = "Spot couldn't be found";
+      err.statusCode = 404
+      res.statusCode = 404;
+      return res.json(err)
+    }
+
+    if (req.user.id !== spotById.ownerId) {
+      let err = {};
+      err.title = "Authorization Error"
+      err.message = "This isn't your spot to edit!";
+      err.statusCode = 401;
+      res.statuscode = 401;
+      return res.json(err)
+    }
 
     let { address, city, state, country, lat, lng, name, description, price } = req.body
 
@@ -52,10 +71,20 @@ router.put(
 
 router.delete(
   '/:spotId',
+  requireAuth,
   async (req, res, next) => {
     const spotId = req.params.spotId
 
     const spotById = await Spot.findByPk(spotId)
+
+    if (req.user.id !== spotById.ownerId) {
+      let err = {};
+      err.title = "Authorization Error"
+      err.message = "This isn't your spot to delete!";
+      err.statusCode = 401;
+      res.statuscode = 401;
+      return res.json(err)
+    }
 
     spotById.destroy()
 
@@ -71,6 +100,7 @@ router.delete(
 router.post(
   '/',
   validateSpotCreation,
+  requireAuth,
   async (req, res, next) => {
     const newSpot = await Spot.create(req.body)
 
