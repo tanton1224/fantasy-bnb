@@ -2,7 +2,7 @@ const express = require('express')
 
 const { setTokenCookie, restoreUser } = require('../utils/auth');
 const { User, Spot } = require('../db/models');
-const { check, validationResult } = require('express-validator');
+const { check, validationResult, Result } = require('express-validator');
 const { handleValidationErrors, validateSpotCreation } = require('../utils/validation');
 
 const router = express.Router();
@@ -17,16 +17,55 @@ router.get(
     const spotById = await Spot.findByPk(spotId)
 
     if (!spotById) {
-      err.message = "Spot couldn't be found"
-      err.statusCode = 404
-      return res.json(err)
+      err.message = "Spot couldn't be found";
+      err.statusCode = 404;
+      return res.json(err);
     }
 
     res.json(spotById)
   }
 )
 
+router.put(
+  '/:spotId',
+  validateSpotCreation,
+  async (req, res, next) => {
+    const spotId = req.params.spotId
 
+    const spotById = await Spot.findByPk(spotId)
+
+    let { address, city, state, country, lat, lng, name, description, price } = req.body
+
+    spotById.address = address
+    spotById.city = city
+    spotById.state = state
+    spotById.country = country
+    spotById.lat = lat
+    spotById.lng = lng
+    spotById.name = name
+    spotById.description = description
+    spotById.price = price
+
+    res.json(spotById)
+  }
+)
+
+router.delete(
+  '/:spotId',
+  async (req, res, next) => {
+    const spotId = req.params.spotId
+
+    const spotById = await Spot.findByPk(spotId)
+
+    spotById.destroy()
+
+    let final = {}
+    final.message = "Successfully deleted"
+    final.statusCode = 200
+
+    res.json(final)
+  }
+)
 
 
 router.post(
@@ -36,8 +75,8 @@ router.post(
     const newSpot = await Spot.create(req.body)
 
     if (!newSpot) {
+      err.message = "Validation Error";
       err.statusCode = 400
-      err.message = "Validation Error"
       return res.json(err)
     }
 
