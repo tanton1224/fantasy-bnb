@@ -14,7 +14,6 @@ module.exports = {
       },
       reviewId: {
         type: Sequelize.INTEGER,
-        allowNull: false,
       },
       url: {
         type: Sequelize.STRING,
