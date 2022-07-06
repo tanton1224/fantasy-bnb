@@ -18,7 +18,7 @@ const validateLogin = [
   handleValidationErrors
 ];
 
-router.post(
+router.post( // login
   '/',
   validateLogin,
   async (req, res, next) => {
@@ -42,7 +42,7 @@ router.post(
   }
 );
 
-router.delete(
+router.delete( // logout
   '/',
   (_req, res) => {
     res.clearCookie('token');
@@ -50,7 +50,7 @@ router.delete(
   }
 );
 
-router.get(
+router.get( // restore user
   '/',
   restoreUser,
   (req, res) => {
