@@ -13,7 +13,23 @@ let err = {}
 router.post(
   '/:spotId/images',
   requireAuth,
+  async (req, res, next) => {
+    const spotId = req.params.spotId
+    const { url } = req.body
 
+    const newImage = await Image.create({
+      spotId,
+      url
+    })
+
+    let final = {}
+    final.id = newImage.id
+    final.imageableId = newImage.spotId
+    final.imageableType = "Spot"
+    final.url = newImage.url
+
+    res.json(final)
+  }
 )
 
 router.get(
@@ -110,12 +126,6 @@ router.post(
   requireAuth,
   async (req, res, next) => {
     const newSpot = await Spot.create(req.body)
-
-    if (!newSpot) {
-      err.message = "Validation Error";
-      err.statusCode = 400
-      return res.json(err)
-    }
 
     res.json(newSpot)
   }
