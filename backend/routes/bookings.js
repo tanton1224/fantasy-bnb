@@ -9,6 +9,35 @@ const booking = require('../db/models/booking');
 const router = express.Router();
 
 
+router.get(
+  '/spot/:spotId',
+  requireAuth,
+  async (req, res, next) => {
+    const spotId = req.params.spotId
+
+    const spotById = await Spot.findByPk(spotId)
+
+    if (req.user.id === spotById.ownerId) {
+      const bookings = await Booking.findAll({
+        where: { spotId },
+        include: [
+          {
+            model: "User",
+            attributes: ["id", "firstName", "lastName"]
+          }
+        ]
+      })
+      res.json(bookings)
+
+    } else {
+      const bookings = await Booking.findAll({
+        where: { spotId },
+        scope: { nonowner } // review this tomorrow
+      })
+    }
+  }
+)
+
 router.post(
   '/spot/:spotId',
   requireAuth,
@@ -17,7 +46,7 @@ router.post(
     const userId = req.user.id
     let { startDate, endDate } = req.body
 
-    const numberSpotId = Number(spotId)
+    // const numberSpotId = Number(spotId)
 
     startDate = new Date(startDate)
     endDate = new Date(endDate)
@@ -71,7 +100,7 @@ router.post(
     }
 
     const newBooking = await Booking.create({
-      spotId: numberSpotId,
+      spotId,
       startDate,
       endDate,
       userId

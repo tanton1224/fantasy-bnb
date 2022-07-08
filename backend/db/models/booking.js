@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
         { foreignKey: 'spotId' }
       )
       Booking.belongsTo(
-        models.Spot,
+        models.User,
         { foreignKey: 'userId' }
       )
     }
@@ -41,6 +41,13 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Booking',
+    scopes: {
+      notOwned: {
+        attributes: {
+          exclude: ["id", "userId", "createdAt", "updatedAt"]
+        }
+      }
+    }
   });
   return Booking;
 };
