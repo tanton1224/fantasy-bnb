@@ -38,6 +38,8 @@ router.post(
     final.imageableId = reviewId
     final.imageableType = "Review"
     final.url = url
+
+    res.json(final)
   }
 )
 
