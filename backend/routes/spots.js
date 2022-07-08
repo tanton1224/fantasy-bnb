@@ -17,6 +17,16 @@ router.post(
     const spotId = req.params.spotId
     const { url } = req.body
 
+    const spotById = await Spot.findByPk(spotId)
+
+    if (!spotById) {
+      let err = {}
+      err.message = "Spot couldn't be found"
+      err.statusCode = 404;
+      res.statusCode = 404;
+      return res.json(err)
+    }
+
     const newImage = await Image.create({
       spotId,
       url
