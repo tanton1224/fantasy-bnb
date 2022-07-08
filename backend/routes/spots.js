@@ -156,7 +156,8 @@ router.post(
   validateSpotCreation,
   requireAuth,
   async (req, res, next) => {
-    const newSpot = await Spot.create(req.body)
+    const ownerId = req.user.id
+    const newSpot = await Spot.create({...req.body, ownerId })
 
     res.json(newSpot)
   }

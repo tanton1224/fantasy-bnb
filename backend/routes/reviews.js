@@ -95,14 +95,14 @@ router.post(
 
     const reviewedAlready = await Review.findAll({
       where: {
-        spotId: spotId,
-        userId: userId
+        spotId,
+        userId
       }
     })
 
     console.log(reviewedAlready)
 
-    if (reviewedAlready) {
+    if (reviewedAlready.length) {
       let err = {};
       err.message = "User already has a review for this spot";
       err.statusCode = 403;
