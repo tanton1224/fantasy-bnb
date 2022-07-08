@@ -3,7 +3,9 @@ const express = require('express')
 const { setTokenCookie, restoreUser, requireAuth } = require('../utils/auth');
 const { User, Spot, Review, Image, Booking } = require('../db/models');
 const { check, validationResult, Result } = require('express-validator');
-const { handleValidationErrors, validateSpotCreation } = require('../utils/validation');
+const { handleValidationErrors, validateSpotCreation, validateQueryParameters } = require('../utils/validation');
+const Sequelize = require('sequelize')
+const Op = Sequelize.Op
 
 const router = express.Router();
 
@@ -144,7 +146,110 @@ router.post(
 router.get(
   '/',
   async (req, res, next) => {
-    const allSpots = await Spot.findAll()
+    let pagination = {}
+    let { page, size, minLat, maxLat, minLng, maxLng, minPrice, maxPrice } = req.query
+
+    let errors = {}
+    let errorDetector = 0
+
+    if (page && page < 0) {
+      errors.page = "Page must be greater than or equal to 0";
+      errorDetector++
+    }
+
+    if (size && size < 0) {
+      errors.size = "Size must be greater than or equal to 0";
+      errorDetector++
+    }
+
+    if (minLat && minLat < -90 && minLat > 90) {
+      errors.minLat = "Minimum latitude is invalid"
+      errorDetector++
+    }
+
+    if (maxLat && maxLat < -90 && maxLat > 90) {
+      errors.maxLat = "Maximum latitude is invalid"
+      errorDetector++
+    }
+
+    if (minLng && minLng < -180 && minLng > 180) {
+      errors.minLng = "Minimum longitude is invalid"
+      errorDetector++
+    }
+
+    if (maxLng && maxLng < -180 && maxLng > 180) {
+      errors.minLng = "Minimum longitude is invalid"
+      errorDetector++
+    }
+
+    if (minPrice && minPrice < 0) {
+      errors.minPrice = "Minimum price muust be greater than 0"
+      errorDetector++
+    }
+
+    if (maxPrice && maxPrice < 0) {
+      errors.maxPrice = "Minimum price muust be greater than 0"
+      errorDetector++
+    }
+
+    if (errorDetector > 0) {
+      let final = {}
+      final.message = "Validation Error"
+      final.statusCode = 400
+      final.errors = errors
+      res.statusCode = 400
+      res.json(final)
+    }
+
+    let where = {}
+
+    if (minLat) {
+      where.lat = { [Op.gte]: minLat }
+    }
+
+    if (maxLat) {
+      where.lat = { [Op.lte]: maxLat }
+    }
+
+    if (minLat && maxLat) {
+      where.lat = { [Op.gte]: minLat, [Op.lte]: maxLat }
+    }
+
+    if (minLng) {
+      where.lng = { [Op.gte]: minLng }
+    }
+
+    if (maxLng) {
+      where.lng = { [Op.lte]: maxLng }
+    }
+
+    if (minLng && maxLng) {
+      where.lng = { [Op.gte]: minLng, [Op.lte]: maxLng }
+    }
+
+    if (minPrice) {
+      where.price = { [Op.gte]: minPrice }
+    }
+
+    if (maxPrice) {
+      where.price = { [Op.lte]: maxPrice }
+    }
+
+    if (minPrice && maxPrice) {
+      where.price = { [Op.gte]: minPrice, [Op.lte]: maxPrice }
+    }
+
+
+    page = page === undefined ? 0 : parseInt(page); // these handle defaults in the absence of query
+    size = size === undefined ? 20 : parseInt(size);
+
+    pagination.limit = size
+    pagination.offset = size * page
+
+    const allSpots = await Spot.findAll({
+      ...pagination,
+      where,
+    })
 
     res.json(allSpots);
   }
