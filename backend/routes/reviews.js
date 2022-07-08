@@ -8,6 +8,41 @@ const { handleValidationErrors, validateReview } = require('../utils/validation'
 const router = express.Router();
 
 
+router.post(
+  '/:reviewId/images',
+  requireAuth,
+  async (req, res, next) => {
+    const reviewId = req.params.reviewId
+    const { url } = req.body
+
+    const reviewById = await Review.findByPk(reviewId);
+
+    if (!reviewById) {
+      let err = {}
+      err.message = "Review couldn't be found"
+      err.statusCode = 404;
+      res.statusCode = 404;
+      return res.json(err)
+    }
+
+    const spotId = reviewById.spotId
+
+    const newImage = await Image.create({
+      spotId,
+      reviewId,
+      url
+    })
+
+    const final = {};
+    final.id = newImage.id
+    final.imageableId = reviewId
+    final.imageableType = "Review"
+    final.url = url
+
+    res.json(final)
+  }
+)
+
 router.get(
   '/spot/:spotId',
   async (req, res, next) => {
@@ -59,8 +94,13 @@ router.post(
     }
 
     const reviewedAlready = await Review.findAll({
-      where: { userId }
+      where: {
+        spotId: spotId,
+        userId: userId
+      }
     })
+
+    console.log(reviewedAlready)
 
     if (reviewedAlready) {
       let err = {};

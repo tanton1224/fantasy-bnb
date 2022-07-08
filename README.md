@@ -837,7 +837,7 @@ Return all the bookings that the current user has made.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: /bookings/user/:userId
+  * URL: /profile/bookings
   * Body: none
 
 * Successful Response

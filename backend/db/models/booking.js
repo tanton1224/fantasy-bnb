@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
         { foreignKey: 'spotId' }
       )
       Booking.belongsTo(
-        models.Spot,
+        models.User,
         { foreignKey: 'userId' }
       )
     }
@@ -53,8 +53,14 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     }
   }, {
+    scopes: {
+      notOwned: {
+          attributes: ['spotId', 'startDate', 'endDate']
+      }
+    },
     sequelize,
     modelName: 'Booking',
+
   });
   return Booking;
 };

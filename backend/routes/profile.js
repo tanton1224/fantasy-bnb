@@ -4,6 +4,7 @@ const { setTokenCookie, restoreUser, requireAuth } = require('../utils/auth');
 const { User, Spot, Review, Image, Booking } = require('../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../utils/validation');
+const { route } = require('./api');
 
 const router = express.Router();
 
@@ -26,10 +27,10 @@ router.get(
   '/reviews',
   requireAuth,
   async (req, res, next) => {
-    const id = req.user.id
+    const userId = req.user.id
 
     const ownedReviews = await Review.findAll({
-      where: { id },
+      where: { userId },
       include: [
         {
           model: User,
@@ -47,6 +48,26 @@ router.get(
     })
 
     res.json(ownedReviews)
+  }
+)
+
+router.get(
+  '/bookings',
+  requireAuth,
+  async (req, res, next) => {
+    const userId = req.user.id;
+
+    const ownedBookings = await Booking.findAll({
+      where: { userId },
+      include: [
+        {
+          model: Spot,
+          attributes: { exclude: ['createdAt', 'updatedAt'] }
+        },
+      ]
+    })
+
+    res.json(ownedBookings)
   }
 )
 
