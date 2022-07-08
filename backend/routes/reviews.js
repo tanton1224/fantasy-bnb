@@ -8,6 +8,12 @@ const { handleValidationErrors, validateReview } = require('../utils/validation'
 const router = express.Router();
 
 
+router.post(
+  '/:reviewId/images',
+  requireAuth,
+
+)
+
 router.get(
   '/spot/:spotId',
   async (req, res, next) => {

@@ -9,6 +9,13 @@ const router = express.Router();
 
 let err = {}
 
+
+router.post(
+  '/:spotId/images',
+  requireAuth,
+
+)
+
 router.get(
   '/:spotId',
   async (req, res, next) => {

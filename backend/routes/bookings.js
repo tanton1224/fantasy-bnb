@@ -30,10 +30,10 @@ router.get(
       res.json(bookings)
 
     } else {
-      const bookings = await Booking.findAll({
+      const bookings = await Booking.scope('notOwned').findAll({
         where: { spotId },
-        scope: { nonowner } // review this tomorrow
       })
+      res.json(bookings)
     }
   }
 )
@@ -121,11 +121,21 @@ router.put(
 
     const spotId = bookingById.spotId
 
+    const now = new Date
+
     if (!booking) { // if booking doesn't exist
       let err = {};
       err.message = "Booking couldn't be found"
       err.statusCode = 404;
       res.statusCode = 404;
+      res.json(err)
+    }
+
+    if (booking.startDate < now) {
+      let err = {};
+      err.message = "Past bookings can't be modified";
+      err.statusCode = 400;
+      res.statusCode = 400;
       res.json(err)
     }
 

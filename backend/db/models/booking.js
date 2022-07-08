@@ -39,15 +39,14 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     }
   }, {
-    sequelize,
-    modelName: 'Booking',
     scopes: {
       notOwned: {
-        attributes: {
-          exclude: ["id", "userId", "createdAt", "updatedAt"]
-        }
+          attributes: ['spotId', 'startDate', 'endDate']
       }
-    }
+    },
+    sequelize,
+    modelName: 'Booking',
+
   });
   return Booking;
 };

@@ -21,6 +21,7 @@ const spotsRouter = require('./spots');
 const profileRouter = require('./profile');
 const reviewsRouter = require('./reviews');
 const bookingsRouter = require('./bookings');
+const imagesRouter = require('/images')
 
 router.use('/api', apiRouter);
 router.use('/login', loginRouter);
