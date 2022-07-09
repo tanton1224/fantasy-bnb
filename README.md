@@ -957,7 +957,7 @@ Create and return a new booking from a spot specified by id.
     ```json
     {
       "startDate": "2021-11-19",
-      "endDate": "2021-11-19"
+      "endDate": "2021-11-20"
     }
     ```
 
