@@ -21,6 +21,7 @@ const spotsRouter = require('./spots');
 const profileRouter = require('./profile');
 const reviewsRouter = require('./reviews');
 const bookingsRouter = require('./bookings');
+const imagesRouter = require('./images');
 
 router.use('/api', apiRouter);
 router.use('/login', loginRouter);
@@ -29,6 +30,7 @@ router.use('/spots', spotsRouter);
 router.use('/profile', profileRouter);
 router.use('/reviews', reviewsRouter);
 router.use('/bookings', bookingsRouter);
+router.use('/images', imagesRouter);
 
 
 module.exports = router;
