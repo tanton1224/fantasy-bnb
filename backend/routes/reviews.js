@@ -25,6 +25,14 @@ router.post(
       return res.json(err)
     }
 
+    if (reviewById.userId !== req.user.id) {
+      let err = {}
+      err.message = "This isn't your review to add an image to!"
+      err.statusCode = 403;
+      res.statusCode = 403;
+      return res.json(err)
+    }
+
     const spotId = reviewById.spotId
 
     const newImage = await Image.create({
