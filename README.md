@@ -1391,3 +1391,10 @@ Return spots filtered by query parameters.
       }
     }
     ```
+
+
+## Reviewing the process:
+
+I'd say the most challenging bit was working with the numerous different types of errors and error handlers that were necessary. There are different levels of authentication needed for each action, and it was at times a challenge to figure out how to route to the proper channels to check off different criteria about login or data status.
+
+I'm most proud of the bookings routes. They may not be the cleanest but working with the Date object was a new challenge for me that I am proud I struggled to overcome.
