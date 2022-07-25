@@ -277,7 +277,50 @@ router.get(
     const allSpots = await Spot.findAll({
       ...pagination,
       where,
+      include: [{model: Review}]
     })
+
+    let result = [];
+
+    // allSpots.forEach(async (spot, i) => {
+      // let newSpot;
+      // spot = spot.toJSON();
+      // let reviewCount = await Review.count({ where: { spotId: spot.id }})
+      // let sum = await Review.sum('stars', { where: {spotId: spot.id }})
+      // let avgStarRating = sum / reviewCount
+      // spot.reviewCount = reviewCount
+      // spot.avgStarRating = avgStarRating
+      // // newSpot = {...spot}
+      // result.push(spot)
+      // console.log(i, result)
+    // })
+
+    allSpots.forEach((spot, i) => {
+      let result = {}
+      spot = spot.toJSON()
+      let sum = 0;
+      let avg = 0;
+      let reviews = spot.Reviews
+      if (reviews.length) {
+        for (let review of reviews) {
+          sum += review.stars;
+        }
+        avg = (sum / reviews.length).toFixed(1);
+        spot.numReviews = reviews.length;
+        spot.avgStarRating = avg;
+        delete spot.Reviews
+        result = { ...spot }
+        allSpots[i] = result;
+      } else {
+        spot.numReviews = reviews.length;
+        spot.avgStarRating = "0";
+        delete spot.Reviews
+        result = { ...spot }
+        allSpots[i] = result;
+      }
+    })
+    console.log(result)
+
 
     res.json(allSpots);
   }
