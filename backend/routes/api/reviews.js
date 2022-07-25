@@ -25,6 +25,14 @@ router.post(
       return res.json(err)
     }
 
+    if (reviewById.userId !== req.user.id) {
+      let err = {}
+      err.message = "This isn't your review to add an image to!"
+      err.statusCode = 403;
+      res.statusCode = 403;
+      return res.json(err)
+    }
+
     const spotId = reviewById.spotId
 
     const newImage = await Image.create({
@@ -95,14 +103,14 @@ router.post(
 
     const reviewedAlready = await Review.findAll({
       where: {
-        spotId: spotId,
-        userId: userId
+        spotId,
+        userId
       }
     })
 
     console.log(reviewedAlready)
 
-    if (reviewedAlready) {
+    if (reviewedAlready.length) {
       let err = {};
       err.message = "User already has a review for this spot";
       err.statusCode = 403;
