@@ -17,8 +17,6 @@ router.use(restoreUser);
 const apiRouter = require('./api');
 const loginRouter = require('./login');
 const signupRouter = require('./signup');
-const profileRouter = require('./profile');
-const reviewsRouter = require('./reviews');
 
 router.use('/api', apiRouter);
 
@@ -54,8 +52,6 @@ if (process.env.NODE_ENV !== 'production') {
 
 router.use('/login', loginRouter);
 router.use('/signup', signupRouter);
-router.use('/profile', profileRouter);
-router.use('/reviews', reviewsRouter);
 
 
 module.exports = router;

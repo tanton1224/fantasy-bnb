@@ -22,7 +22,7 @@ router.get(
         where: { spotId },
         include: [
           {
-            model: "User",
+            model: User,
             attributes: ["id", "firstName", "lastName"]
           }
         ]
