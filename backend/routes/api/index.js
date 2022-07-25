@@ -17,7 +17,7 @@ router.use('/users', usersRouter);
 router.use('/bookings', bookingsRouter);
 router.use('/spots', spotsRouter);
 router.use('/profile', profileRouter);
-router.use('./reviews', reviewsRouter);
+router.use('/reviews', reviewsRouter);
 
 router.post('/test', (req, res) => {
   res.json({ requestBody: req.body });
