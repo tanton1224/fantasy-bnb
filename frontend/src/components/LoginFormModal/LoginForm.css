@@ -1,0 +1,21 @@
+h2 {
+  display: flex;
+  justify-content: center;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: space-between;
+  border-radius: 10px;
+}
+.input-container {
+  width: 100%;
+  margin: 10px;
+}
+
+input {
+  width: 100%;
+  justify-content: space-between;
+}
