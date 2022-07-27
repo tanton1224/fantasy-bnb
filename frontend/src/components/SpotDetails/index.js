@@ -2,15 +2,20 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getOneSpot } from '../../store/spots'
+import { getSpotImages } from '../../store/images'
 
 function SpotDetails () {
   const { spotId } = useParams();
   const dispatch = useDispatch();
   const spot = useSelector(state => state.spots[spotId])
-  const spotImages = useSelector
+  const spotImages = useSelector(state => state.images[spotId])
+  console.log(spot)
+  console.log(spotImages)
+
 
   useEffect(() => {
-    const spot = await dispatch(getOneSpot(spotId))
+    dispatch(getOneSpot(spotId))
+    dispatch(getSpotImages(spotId))
   }, [dispatch])
 
   return (
@@ -24,11 +29,11 @@ function SpotDetails () {
       <button>{`${spot.numReviews} reviews`}</button>
       <span>{`${spot.city}, ${spot.state}, ${spot.country}`}</span>
     </div>
-    {/* <div className="image-div">
-      {spot.images.map(image => {
+    <div className="image-div">
+      {spotImages.map(image => {
         <img src={`${image}`} alt="There should be an image here!"/>
       })}
-    </div> */}
+    </div>
 
     </>
   )

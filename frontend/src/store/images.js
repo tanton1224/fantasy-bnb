@@ -2,7 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const LOAD_IMAGES = 'images/loadImages'
 
-const loadImages = (images) => ({
+const loadImages = (images, spotId) => ({
   type: LOAD_IMAGES,
   images,
   spotId
@@ -13,7 +13,7 @@ export const getSpotImages = (spotId) => async dispatch => {
 
   if (response.ok) {
     const spotData = await response.json()
-    const images = spotData.images
+    const images = spotData.spotById.Images
     dispatch(loadImages(images, spotId))
     return images;
   }
@@ -27,6 +27,8 @@ const imagesReducer = (state = {}, action) => {
       newState = {...state}
       newState[action.spotId] = action.images
       return newState;
+    default:
+      return state;
   }
 }
 
