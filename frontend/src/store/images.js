@@ -22,9 +22,9 @@ export const getSpotImages = (spotId) => async dispatch => {
   }
 }
 
-let newState;
 
 const imagesReducer = (state = {}, action) => {
+  let newState = {}
   switch (action.type) {
     case LOAD_IMAGES:
       newState = {...state}

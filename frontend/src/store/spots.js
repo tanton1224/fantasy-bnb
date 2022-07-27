@@ -15,7 +15,7 @@ const createSpot = (spot) => ({
 });
 
 const loadSpot = (spot) => ({
-  type: LOAD_SPOT,
+  type: LOAD_SPOTS,
   spot,
 });
 
@@ -32,7 +32,7 @@ export const getOneSpot = (spotId) => async dispatch => {
 
   if (res.ok) {
     const spot = await res.json();
-    dispatch(loadSpot(spot))
+    dispatch(loadSpot(spot, spotId))
     return spot
   }
 }
@@ -51,21 +51,29 @@ export const createSpotThunk = (payload) => async dispatch => {
   }
 }
 
-let newState;
+export const editSpotThunk = (payload) => async dispatch => {
+  const res = await csrfFetch(`/api/spots/${payload.spotId}`, {
+    method: 'PUT',
+    headers: { "Content-Type": "application/json" },
+    body: payload
+  })
+}
+
 
 const spotsReducer = (state = {}, action) => {
+  let newState = {}
   switch (action.type) {
     case LOAD_SPOTS:
+      if (action.spotId) {
+        newState[action.spotId] = action.spot
+        return newState
+      }
       newState = {...state};
       action.spotList.forEach(spot => {
         newState[spot.id] = spot;
       });
       return newState;
     case CREATE_SPOT:
-      newState = {...state};
-      newState[action.spot.id] = action.spot
-      return newState;
-    case LOAD_SPOT:
       newState = {...state};
       newState[action.spot.id] = action.spot
       return newState;
