@@ -6,12 +6,14 @@ import * as sessionActions from "./store/session";
 import AllSpots from "./components/AllSpots";
 import CreateSpotForm from "./components/CreateSpotForm";
 import SpotDetails from "./components/SpotDetails";
+import { getAllSpots } from './store/spots'
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+    dispatch(getAllSpots())
   }, [dispatch]);
 
   return (

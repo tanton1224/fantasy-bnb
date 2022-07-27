@@ -11,8 +11,11 @@ const loadImages = (images, spotId) => ({
 export const getSpotImages = (spotId) => async dispatch => {
   const response = await fetch(`/api/spots/${spotId}`)
 
+  console.log("Is the response ok?", response.ok)
+
   if (response.ok) {
     const spotData = await response.json()
+    console.log('THIS IS SPOT DATA', spotData)
     const images = spotData.spotById.Images
     dispatch(loadImages(images, spotId))
     return images;

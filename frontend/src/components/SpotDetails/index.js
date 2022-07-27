@@ -20,7 +20,7 @@ function SpotDetails () {
 
   return (
     <>
-    {console.log(spot)}
+    {console.log("This is spot images", spotImages)}
     <div className="title-div">
       <h1>{spot.name}</h1>
     </div>
