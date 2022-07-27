@@ -4,20 +4,18 @@ import { useHistory } from 'react-router-dom'
 import { editSpotThunk } from '../../store/spots'; // gotta make this
 import './EditSpotForm.css'
 
-function EditSpotForm ({ spot }) {
+function EditSpotForm ({ spot, hideForm }) {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [ address, setAddress ] = useState('')
-  const [ city, setCity ] = useState('')
-  const [ state, setState ] = useState('')
-  const [ country, setCountry ] = useState('')
-  const [ name, setName ] = useState('')
-  const [ description, setDescription ] = useState('')
-  const [ price, setPrice ] = useState('')
+  const [ address, setAddress ] = useState(spot.address)
+  const [ city, setCity ] = useState(spot.city)
+  const [ state, setState ] = useState(spot.state)
+  const [ country, setCountry ] = useState(spot.country)
+  const [ name, setName ] = useState(spot.name)
+  const [ description, setDescription ] = useState(spot.description)
+  const [ price, setPrice ] = useState(spot.price)
 
   const onSubmit = async (e) => {
-    e.preventDefault();
-
     const payload = {
       address,
       city,
@@ -26,12 +24,12 @@ function EditSpotForm ({ spot }) {
       name,
       description,
       price,
-      spotId: spot.id,
     };
 
-    let editedSpot = await dispatch(editSpotThunk(payload));
+    let editedSpot = await dispatch(editSpotThunk(payload, spot.id));
     if (editedSpot) {
       history.push(`/spots/${editedSpot.id}`)
+      hideForm()
     }
   }
 

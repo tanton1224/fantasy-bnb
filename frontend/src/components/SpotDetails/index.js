@@ -48,7 +48,7 @@ function SpotDetails () {
         <button>Delete Spot</button>
       </div>
     )}
-    {showEditForm && <EditSpotForm spot={spot}/>}
+    {showEditForm && <EditSpotForm spot={spot} hideForm={() => setShowEditForm(false)} />}
     {spot && (
       <div className="column-container">
         <div className="left-column">

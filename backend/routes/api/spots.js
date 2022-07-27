@@ -121,13 +121,18 @@ router.put(
     spotById.city = city
     spotById.state = state
     spotById.country = country
-    spotById.lat = lat
-    spotById.lng = lng
+    if (lat) {
+      spotById.lat = lat
+    }
+    if (lng) {
+      spotById.lng = lng
+    }
     spotById.name = name
     spotById.description = description
     spotById.price = price
 
-    res.json(spotById)
+    await spotById.save();
+    res.json(spotById);
   }
 )
 

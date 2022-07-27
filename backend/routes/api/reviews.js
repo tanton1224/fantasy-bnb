@@ -159,6 +159,8 @@ router.put(
     reviewById.reviewContent = review
     reviewById.stars = stars
 
+    await reviewById.save()
+
     res.json(reviewById)
   }
 )
