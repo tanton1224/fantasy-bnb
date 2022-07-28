@@ -5,7 +5,7 @@ module.exports = {
     return await queryInterface.bulkInsert('Images', [
       {
         spotId: 1,
-        url: "https://static.wikia.nocookie.net/harrypotter/images/e/e1/Hogwarts_Castle_DHF2.jpg/revision/latest?cb=20120128145344",
+        url: "https://static.wikia.nocookie.net/harrypotter/images/e/e1/Hogwarts_Castle_DHF2.jpg",
       },
       {
         spotId: 1,
@@ -13,7 +13,7 @@ module.exports = {
       },
       {
         spotId: 1,
-        url: "https://static.wikia.nocookie.net/harrypotter/images/d/d3/Hogwarts_Quidditch_Pitch_in_1996_HBPF.jpg/revision/latest?cb=20210719213600",
+        url: "https://static.wikia.nocookie.net/harrypotter/images/d/d3/Hogwarts_Quidditch_Pitch_in_1996_HBPF.jpg",
       },
       {
         spotId: 1,
@@ -21,11 +21,19 @@ module.exports = {
       },
       {
         spotId: 1,
-        url: "https://static.wikia.nocookie.net/harrypotter/images/6/62/Chamber.png/revision/latest/scale-to-width-down/1200?cb=20180613173723",
+        url: "https://static.wikia.nocookie.net/harrypotter/images/6/62/Chamber.png",
       },
       {
         spotId: 2,
-        url: "image-url",
+        url: "https://bigshinyrobot.com/wp-content/uploads/2016/12/helms-deep-1568x909.jpg",
+      },
+      {
+        spotId: 3,
+        url: "https://cdna.artstation.com/p/assets/images/images/012/910/872/large/clayscence-art-lee2-2.jpg?1537148145",
+      },
+      {
+        spotId: 4,
+        url: "https://cdna.artstation.com/p/assets/images/images/012/910/872/large/clayscence-art-lee2-2.jpg?1537148145",
       },
      ])
   },
