@@ -42,7 +42,7 @@ function SpotDetails () {
     {spotImages && (
       <div className="image-div">
         {spotImages?.map(image => (
-          <img src={`https://media.istockphoto.com/vectors/vector-illustration-of-red-house-icon-vector-id155666671?k=20&m=155666671&s=612x612&w=0&h=sL5gRpVmrGcZBVu5jEjF5Ne7A4ZrBCuh5d6DpRv3mps=`} alt="There should be an image here!"/>
+          <img src={`${image.url}`} alt="There should be an image here!"/>
         ))}
       </div>
     )}

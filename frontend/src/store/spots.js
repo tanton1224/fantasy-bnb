@@ -97,4 +97,4 @@ const spotsReducer = (state = {}, action) => {
   };
 };
 
-export default spotsReducer
+export default spotsReducer;
