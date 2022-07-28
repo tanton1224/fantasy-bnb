@@ -23,7 +23,7 @@ const selectedSpotReducer = (state = {}, action) => {
   switch (action.type) {
     case LOAD_SPOT:
       newState = action.spot;
-      return newState;
+      return newState;    
     default:
       return state;
   }

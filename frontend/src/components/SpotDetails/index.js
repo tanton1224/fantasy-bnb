@@ -6,6 +6,7 @@ import { getSpotImages } from '../../store/images'
 import EditSpotForm from "../EditSpotForm";
 import DeleteSpotModal from "../DeleteSpotModal";
 import { getAllSpotReviews } from "../../store/reviews";
+import ReviewDisplay from "../ReviewDisplay";
 
 function SpotDetails () {
   const { spotId } = useParams();
@@ -85,6 +86,7 @@ function SpotDetails () {
         </div>
       </div>
     )}
+    <ReviewDisplay spotId={spotId} />
     </>
   )
 }
