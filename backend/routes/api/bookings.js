@@ -1,10 +1,10 @@
 const express = require('express')
 
-const { setTokenCookie, restoreUser, requireAuth } = require('../utils/auth');
-const { User, Spot, Review, Image, Booking } = require('../db/models');
+const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth');
+const { User, Spot, Review, Image, Booking } = require('../../db/models');
 const { check, validationResult, Result } = require('express-validator');
-const { handleValidationErrors, validateSpotCreation } = require('../utils/validation');
-const booking = require('../db/models/booking');
+const { handleValidationErrors, validateSpotCreation } = require('../../utils/validation');
+const booking = require('../../db/models/booking');
 
 const router = express.Router();
 
@@ -22,7 +22,7 @@ router.get(
         where: { spotId },
         include: [
           {
-            model: "User",
+            model: User,
             attributes: ["id", "firstName", "lastName"]
           }
         ]

@@ -1,10 +1,10 @@
 const express = require('express')
 
-const { setTokenCookie, restoreUser, requireAuth } = require('../utils/auth');
-const { User, Spot, Review, Image, Booking } = require('../db/models');
+const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth');
+const { User, Spot, Review, Image, Booking } = require('../../db/models');
 const { check } = require('express-validator');
-const { handleValidationErrors } = require('../utils/validation');
-const { route } = require('./api');
+const { handleValidationErrors } = require('../../utils/validation');
+const { route } = require('.');
 
 const router = express.Router();
 
