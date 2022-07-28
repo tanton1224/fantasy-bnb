@@ -25,6 +25,7 @@ function SpotDetails () {
   const detailedSpot = useSelector(state => state.selectedSpot.spotById)
   const spotImages = useSelector(state => state.images[spotId])
   const user = useSelector(state => state.session.user)
+  const reviews = useSelector(state => state.reviews[spotId])
 
   return (
     <>
@@ -88,7 +89,7 @@ function SpotDetails () {
       </div>
     )}
     <ReviewDisplay spotId={spotId} />
-    {/* <CreateReviewForm spotId={spotId} /> */}
+    <CreateReviewForm spotId={spotId} />
     </>
   )
 }

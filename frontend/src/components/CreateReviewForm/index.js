@@ -9,19 +9,19 @@ function CreateReviewForm ({ spotId }) {
   const [ stars, setStars ] = useState('')
 
   const onSubmit = async (e) => {
-    e.preventDefault();
-
     const payload = {
       review,
       stars
     }
 
-    dispatch(createOneReview(payload, spotId))
+    await dispatch(createOneReview(payload, spotId))
   }
 
   return (
     <div className="review-form-container">
-      <form className="review-form">
+      <form className="review-form"
+        onSubmit={onSubmit}
+      >
         <textarea
           placeholder="Write your review here..."
           value={review}

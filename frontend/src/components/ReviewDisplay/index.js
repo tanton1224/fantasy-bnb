@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getAllSpotReviews } from "../../store/reviews";
+import { deleteYourReview, getAllSpotReviews } from "../../store/reviews";
 
 function ReviewDisplay ({spotId}) {
   const dispatch = useDispatch();
   const reviews = useSelector(state => state.reviews[spotId])
+  const user = useSelector(state => state.session.user)
   const [ isLoaded, setIsLoaded ] = useState(false);
 
   useEffect(() => {
@@ -20,9 +21,6 @@ function ReviewDisplay ({spotId}) {
     getSpotReviews();
   }, [dispatch, reviews])
 
-  console.log("This is reviews", reviews)
-  console.log("This is spotId", spotId)
-
   return (
     <div className="reviews-display">
       {isLoaded && reviews?.map((review) => (
@@ -33,6 +31,12 @@ function ReviewDisplay ({spotId}) {
             <div className="review-content">
               {`${review.reviewContent}`}
             </div>
+            {user?.id === review.User.id && (<div className="delete-review-button-container">
+              <button className="delete-review-button" onClick={() => {
+                dispatch(deleteYourReview(review.id, spotId));
+                window.location.reload();
+                }}>Delete</button>
+            </div>)}
           </div>
       ))}
     </div>
