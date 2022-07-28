@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { getOneSpot } from '../../store/selectedSpot'
 import { getSpotImages } from '../../store/images'
 import EditSpotForm from "../EditSpotForm";
+import DeleteSpotModal from "../DeleteSpotModal";
 
 function SpotDetails () {
   const { spotId } = useParams();
@@ -45,7 +46,7 @@ function SpotDetails () {
     {user?.id === spot?.ownerId && (
       <div className="owned-spot-<p></p>uttons">
         <button onClick={() => setShowEditForm(!showEditForm)}>Edit Spot</button>
-        <button>Delete Spot</button>
+        <DeleteSpotModal spotId={spot.id}/>
       </div>
     )}
     {showEditForm && <EditSpotForm spot={spot} hideForm={() => setShowEditForm(false)} />}
