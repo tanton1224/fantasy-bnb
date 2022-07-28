@@ -33,12 +33,6 @@ const validateSpotCreation = [
   check('country')
     .notEmpty()
     .withMessage("Country is required"),
-  check('lat')
-    .isNumeric()
-    .withMessage("Latitude is not valid"),
-  check('lng')
-    .isNumeric()
-    .withMessage("Longitude is not valid"),
   check('name')
     .isLength({min: 1, max: 50})
     .withMessage("Name must be less than 50 characters"),
