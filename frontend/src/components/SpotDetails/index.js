@@ -7,6 +7,7 @@ import EditSpotForm from "../EditSpotForm";
 import DeleteSpotModal from "../DeleteSpotModal";
 import { getAllSpotReviews } from "../../store/reviews";
 import ReviewDisplay from "../ReviewDisplay";
+import CreateReviewForm from "../CreateReviewForm";
 
 function SpotDetails () {
   const { spotId } = useParams();
@@ -87,6 +88,7 @@ function SpotDetails () {
       </div>
     )}
     <ReviewDisplay spotId={spotId} />
+    {/* <CreateReviewForm spotId={spotId} /> */}
     </>
   )
 }

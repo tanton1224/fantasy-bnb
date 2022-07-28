@@ -1,22 +1,34 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getAllSpotReviews } from "../../store/reviews";
 
 function ReviewDisplay ({spotId}) {
   const dispatch = useDispatch();
-  const reviews = useSelector(state => state.reviews.spotId)
-  const user = reviews?.User
+  const reviews = useSelector(state => state.reviews[spotId])
+  const [ isLoaded, setIsLoaded ] = useState(false);
 
   useEffect(() => {
-    dispatch(getAllSpotReviews(spotId))
-  }, [dispatch])
+    async function getSpotReviews () {
+      if (reviews === undefined) {
+        const response = await dispatch(getAllSpotReviews(spotId))
+        setIsLoaded(true);
+      } else {
+        setIsLoaded(true)
+      }
+    }
+
+    getSpotReviews();
+  }, [dispatch, reviews])
+
+  console.log("This is reviews", reviews)
+  console.log("This is spotId", spotId)
 
   return (
     <div className="reviews-display">
-      {reviews && user && reviews.map((review) => (
+      {isLoaded && reviews?.map((review) => (
           <div className="review-container">
             <div className="review-name-date">
-              {`${user.firstName} ${user.lastName}`}<i className="fa-solid fa-star"></i>{`${review.stars}`}
+              {`${review.User.firstName} ${review.User.lastName}`}<i className="fa-solid fa-star"></i>{`${review.stars}`}
             </div>
             <div className="review-content">
               {`${review.reviewContent}`}
