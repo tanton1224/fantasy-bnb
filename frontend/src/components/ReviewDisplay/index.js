@@ -4,8 +4,7 @@ import { getAllSpotReviews } from "../../store/reviews";
 
 function ReviewDisplay ({spotId}) {
   const dispatch = useDispatch();
-  const reviews = useSelector(state => state.reviews.spotId)
-  const user = reviews?.User
+  const reviews = useSelector(state => state.reviews[spotId])
 
   useEffect(() => {
     dispatch(getAllSpotReviews(spotId))
@@ -13,10 +12,10 @@ function ReviewDisplay ({spotId}) {
 
   return (
     <div className="reviews-display">
-      {reviews && user && reviews.map((review) => (
+      {reviews && reviews.map((review) => (
           <div className="review-container">
             <div className="review-name-date">
-              {`${user.firstName} ${user.lastName}`}<i className="fa-solid fa-star"></i>{`${review.stars}`}
+              {`${review.User.firstName} ${review.User.lastName}`}<i className="fa-solid fa-star"></i>{`${review.stars}`}
             </div>
             <div className="review-content">
               {`${review.reviewContent}`}
