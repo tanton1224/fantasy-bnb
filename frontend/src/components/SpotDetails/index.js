@@ -5,6 +5,7 @@ import { getOneSpot } from '../../store/selectedSpot'
 import { getSpotImages } from '../../store/images'
 import EditSpotForm from "../EditSpotForm";
 import DeleteSpotModal from "../DeleteSpotModal";
+import { getAllSpotReviews } from "../../store/reviews";
 
 function SpotDetails () {
   const { spotId } = useParams();
@@ -13,8 +14,9 @@ function SpotDetails () {
   const [ showEditForm, setShowEditForm ] = useState(false)
 
   useEffect(() => {
-    dispatch(getOneSpot(spotId))
-    dispatch(getSpotImages(spotId))
+    dispatch(getOneSpot(spotId));
+    dispatch(getSpotImages(spotId));
+    dispatch(getAllSpotReviews(spotId));
   }, [dispatch])
 
   const spot = useSelector(state => state.spots[spotId])
@@ -44,7 +46,7 @@ function SpotDetails () {
       </div>
     )}
     {user?.id === spot?.ownerId && (
-      <div className="owned-spot-<p></p>uttons">
+      <div className="owned-spot-buttons">
         <button onClick={() => setShowEditForm(!showEditForm)}>Edit Spot</button>
         <DeleteSpotModal spotId={spot.id}/>
       </div>
