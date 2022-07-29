@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom'
+import { useHistory, Redirect } from 'react-router-dom'
 import { createSpotThunk } from '../../store/spots';
 import './CreateSpotForm.css'
 
@@ -30,7 +30,7 @@ function CreateSpotForm () {
 
     let createdSpot = await dispatch(createSpotThunk(payload));
     if (createdSpot) {
-      history.push(`/spots/${createdSpot.id}`)
+      history.push("/");
     }
   }
 

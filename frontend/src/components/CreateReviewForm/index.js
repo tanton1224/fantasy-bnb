@@ -9,6 +9,8 @@ function CreateReviewForm ({ spotId }) {
   const [ stars, setStars ] = useState('')
 
   const onSubmit = async (e) => {
+    e.preventDefault();
+
     const payload = {
       review,
       stars

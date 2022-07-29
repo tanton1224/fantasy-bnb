@@ -37,14 +37,14 @@ export const getAllSpots = () => async dispatch => {
 export const createSpotThunk = (payload) => async dispatch => {
   const res = await csrfFetch('/api/spots', {
     method: 'POST',
-    headers: { "Content-Type": "Application/json" },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload)
   })
 
   if (res.ok) {
-    dispatch(createSpot(payload));
-    let data = await res.json()
-    return data
+    let spot = await res.json();
+    dispatch(createSpot(spot));
+    return spot;
   }
 }
 

@@ -59,10 +59,9 @@ router.get(
 
     const spotById = await Spot.findOne({
       where: { id: spotId },
-      include: [ { model: User }, { model: Image, attributes: ['url'], where: {
-        reviewId: null
-      } } ]
+      include: [ { model: User }, { model: Image, attributes: ['url'] } ]
     })
+    console.log(spotById)
 
     const numReviews = await Review.count({
       where: {
