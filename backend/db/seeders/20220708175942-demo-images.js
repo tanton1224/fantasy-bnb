@@ -5,10 +5,6 @@ module.exports = {
     return await queryInterface.bulkInsert('Images', [
       {
         spotId: 1,
-        url: "https://static.wikia.nocookie.net/harrypotter/images/e/e1/Hogwarts_Castle_DHF2.jpg",
-      },
-      {
-        spotId: 1,
         url: "https://images.ctfassets.net/usf1vwtuqyxm/3QQaEkThAnIAiXveGhJYD9/f79a571dbe9fd456d65e783040601fdc/hogwarts-castle-.jpg",
       },
       {
@@ -25,7 +21,7 @@ module.exports = {
       },
       {
         spotId: 2,
-        url: "https://bigshinyrobot.com/wp-content/uploads/2016/12/helms-deep-1568x909.jpg",
+        url: "https://64.media.tumblr.com/05813a216ca545b1205306073f8eabf0/e1cc60d81d64240d-95/s1280x1920/df750a9906b3088a224fa2a2f191526245f69e15.jpg",
       },
       {
         spotId: 3,
