@@ -22,6 +22,7 @@ function SpotDetails () {
   }, [dispatch])
 
   const spot = useSelector(state => state.spots[spotId])
+  const extraSpotInfo = useSelector(state => state.selectedSpot)
   const detailedSpot = useSelector(state => state.selectedSpot.spotById)
   const spotImages = useSelector(state => state.images[spotId])
   const user = useSelector(state => state.session.user)
@@ -70,8 +71,8 @@ function SpotDetails () {
               </span>
               <span>
                 <i className="fa-solid fa-star"></i>
-                <span className="booking-creator-review-score">{`${spot.avgStarRating} -`}</span>
-                <span className="booking-creator-review-count">{`${spot.numReviews} reviews`}</span>
+                <span className="booking-creator-review-score">{`${extraSpotInfo.avgStarRating} -`}</span>
+                <span className="booking-creator-review-count">{`${extraSpotInfo.numReviews} reviews`}</span>
               </span>
             </div>
             <div className="booking-creator-form-container">
@@ -88,8 +89,10 @@ function SpotDetails () {
         </div>
       </div>
     )}
-    <ReviewDisplay spotId={spotId} />
-    <CreateReviewForm spotId={spotId} />
+    <div className="spot-reviews-container">
+      <ReviewDisplay spotId={spotId} />
+      <CreateReviewForm spotId={spotId} reviews={reviews} />
+    </div>
     </>
   )
 }

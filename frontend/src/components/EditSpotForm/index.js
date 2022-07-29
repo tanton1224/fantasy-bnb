@@ -16,6 +16,8 @@ function EditSpotForm ({ spot, hideForm }) {
   const [ price, setPrice ] = useState(spot.price)
 
   const onSubmit = async (e) => {
+    e.preventDefault();
+
     const payload = {
       address,
       city,

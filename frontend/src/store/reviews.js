@@ -42,6 +42,7 @@ export const createOneReview = (payload, spotId) => async dispatch => {
   if (res.ok) {
     const review = await res.json();
     dispatch(createReview(review, spotId));
+    dispatch(getAllSpotReviews(spotId));
     return review;
   }
 }
@@ -51,6 +52,7 @@ export const deleteYourReview = (reviewId, spotId) => async dispatch => {
 
   if (res.ok) {
     dispatch(deleteReview(reviewId, spotId))
+    dispatch(getAllSpotReviews(spotId))
   }
 }
 
@@ -71,8 +73,8 @@ const reviewsReducer = (state = {}, action) => {
       newState[action.spotId].forEach((review, i) => {
         if (review.id === action.reviewId) {
           newState[action.spotId].splice(i, 1)
-        }
-      })
+        };
+      });
       return newState;
     default:
       return state;
