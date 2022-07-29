@@ -10,7 +10,6 @@ function CreateReviewForm ({ spotId, reviews }) {
   const [ review, setReview ] = useState('');
   const [ stars, setStars ] = useState(0)
   const [ errors, setErrors ] = useState([])
-  const [ hasErrors, setHasErrors ] = useState(false)
   const user = useSelector(state => state.session.user)
 
   useEffect(() => {
