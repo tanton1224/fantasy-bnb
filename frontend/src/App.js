@@ -17,22 +17,25 @@ function App() {
   }, [dispatch]);
 
   return (
-    <>
+    <div className="site-container" >
+
       <Navigation isLoaded={isLoaded} />
-      {isLoaded && (
-        <Switch>
-          <Route exact path="/">
-            <AllSpots />
-          </Route>
-          <Route exact path="/spots/new">
-            <CreateSpotForm />
-          </Route>
-          <Route path="/spots/:spotId">
-            <SpotDetails />
-          </Route>
-        </Switch>
-      )}
-    </>
+      <div className="content">
+        {isLoaded && (
+          <Switch>
+            <Route exact path="/">
+              <AllSpots />
+            </Route>
+            <Route exact path="/spots/new">
+              <CreateSpotForm />
+            </Route>
+            <Route path="/spots/:spotId">
+              <SpotDetails />
+            </Route>
+          </Switch>
+        )}
+      </div>
+    </div>
   );
 }
 

@@ -24,17 +24,19 @@ function Navigation({ isLoaded }){
   }
 
   return (
-    <ul>
-      <li>
+    <div className='nav-bar'>
+      <div>
         <NavLink exact to="/">Home</NavLink>
         { sessionUser &&
           <NavLink to='/spots/new'>
             <button>Become a Host</button>
           </NavLink>
         }
+      </div>
+      <div>
         {isLoaded && sessionLinks}
-      </li>
-    </ul>
+      </div>
+    </div>
   );
 }
 
