@@ -16,7 +16,7 @@ function AllSpots () {
   }, [dispatch])
 
   return (
-    <>
+    <div className='spots-container'>
       {spots.map(spot => {
         return (
           <NavLink key={spot.id} to={`/spots/${spot.id}`}>
@@ -25,14 +25,16 @@ function AllSpots () {
                 <img src={`https://cdna.artstation.com/p/assets/images/images/012/910/872/large/clayscence-art-lee2-2.jpg?1537148145`} alt="Spot Image" />
               </div>
               <div className='info-container'>
-                <p>{`${spot.city}, ${spot.state}`} <i className='fa-solid fa-star'></i>{`${spot.avgStarRating}`} </p>
+                <div className='top-spot-info-container'>
+                  <p style={{fontWeight: "bold"}}>{`${spot.city}, ${spot.state}`}</p><p><i className='fa-solid fa-star'></i>{`${spot.avgStarRating}`} </p>
+                </div>
                 <p>{`$${spot.price} night`}</p>
               </div>
             </div>
           </NavLink>
         )
       })}
-    </>
+    </div>
   )
 }
 export default AllSpots;
