@@ -42,13 +42,18 @@ function SpotDetails () {
       </div>
       </>
     )}
-    {spotImages && (
-      <div className="image-div">
-        {spotImages?.map(image => (
-          <img src={`${image.url}`} alt="There should be an image here!"/>
-        ))}
+    <div className="all-spot-images-container">
+      <div className="big-spot-image-container">
+        <img src={`${spot?.previewImage}`} alt="Something's gone wrong!" />
       </div>
-    )}
+      {spotImages && (
+        <div className="spot-image-div">
+          {spotImages?.map(image => (
+            <img src={`${image.url}`} alt="There should be an image here!"/>
+          ))}
+        </div>
+      )}
+    </div>
     {user?.id === spot?.ownerId && (
       <div className="owned-spot-buttons">
         <button onClick={() => setShowEditForm(!showEditForm)}>Edit Spot</button>

@@ -22,7 +22,7 @@ function AllSpots () {
           <NavLink key={spot.id} to={`/spots/${spot.id}`}>
             <div className="spot-container">
               <div className="image-container">
-                <img src={`https://cdna.artstation.com/p/assets/images/images/012/910/872/large/clayscence-art-lee2-2.jpg?1537148145`} alt="Spot Image" />
+                <img src={`${spot?.previewImage}`} alt="Spot Image" />
               </div>
               <div className='info-container'>
                 <div className='top-spot-info-container'>
