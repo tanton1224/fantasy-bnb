@@ -78,68 +78,72 @@ function CreateSpotForm () {
   }
 
   return (
-    <section className='create-spot-form-container'>
-      <h2>Create your Spot</h2>
-      {errors.length > 0 && (
-        <ul className='create-spot-form-errors'>
-          {errors.map(error => {
-            return <li>{`${error}`}</li>
-          })}
-        </ul>
-      )}
-      <form className="create-spot-form" onSubmit={onSubmit}>
-        <input
-          type="text"
-          placeholder='Street'
-          value={address}
-          onChange={e => setAddress(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder='City'
-          value={city}
-          onChange={e => setCity(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder='State'
-          value={state}
-          onChange={e => setState(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder='Country'
-          value={country}
-          onChange={e => setCountry(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder='Place Name'
-          value={name}
-          onChange={e => setName(e.target.value)}
-        />
-        <textarea
-          placeholder='Description'
-          value={description}
-          onChange={e => setDescription(e.target.value)}
-          style={{resize: "none"}}
-        />
-        <input
-          type="number"
-          placeholder='Price'
-          min="1"
-          value={price}
-          onChange={e => setPrice(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder='Preview Image URL'
-          value={previewImage}
-          onChange={e => setPreviewImage(e.target.value)}
-        />
-        <button type="submit" disabled={errors.length > 0}>Submit</button>
-      </form>
-    </section>
+    <div className='create-spot-container'>
+      <div className='left-title-side'>
+        <h1>Create your own spot here!</h1>
+      </div>
+      <section className='create-spot-form-container'>
+        <form className="create-spot-form" onSubmit={onSubmit}>
+          <input
+            type="text"
+            placeholder='Street'
+            value={address}
+            onChange={e => setAddress(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder='City'
+            value={city}
+            onChange={e => setCity(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder='State'
+            value={state}
+            onChange={e => setState(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder='Country'
+            value={country}
+            onChange={e => setCountry(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder='Place Name'
+            value={name}
+            onChange={e => setName(e.target.value)}
+          />
+          <textarea
+            placeholder='Description'
+            value={description}
+            onChange={e => setDescription(e.target.value)}
+            style={{resize: "none"}}
+          />
+          <input
+            type="number"
+            placeholder='Price'
+            min="1"
+            value={price}
+            onChange={e => setPrice(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder='Preview Image URL'
+            value={previewImage}
+            onChange={e => setPreviewImage(e.target.value)}
+          />
+          {errors.length > 0 && (
+            <ul className='create-spot-form-errors'>
+              {errors.map(error => {
+                return <li>{`${error}`}</li>
+              })}
+            </ul>
+          )}
+          <button className="create-spot-submit-button" type="submit" disabled={errors.length > 0}>Submit</button>
+        </form>
+      </section>
+    </div>
   )
 }
 

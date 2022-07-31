@@ -5,12 +5,22 @@
   align-items: space-between;
   border-radius: 10px;
 }
-.input-container {
+
+.login-inputs-container input {
   width: 100%;
-  margin: 10px;
+  height: 40px;
+  border: 2px solid #EDEDED;
+  border-radius: 3px;
 }
 
-.login-form > input {
+.login-submit-button {
+  margin-top: 15px;
   width: 100%;
-  justify-content: space-between;
+  height: 48px;
+  border-radius: 8px;
+  border: 0;
+  background: linear-gradient(0.25turn, #E61E4D, #D70666);
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
 }

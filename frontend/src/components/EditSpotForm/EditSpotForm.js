@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom'
 import { editSpotThunk } from '../../store/spots'; // gotta make this
 import './EditSpotForm.css'
 
-function EditSpotForm ({ spot }) {
+function EditSpotForm ({ spot, onClick }) {
   const history = useHistory();
   const dispatch = useDispatch();
   const [ address, setAddress ] = useState(spot.address);
@@ -33,6 +33,7 @@ function EditSpotForm ({ spot }) {
     let editedSpot = await dispatch(editSpotThunk(payload, spot.id));
     if (editedSpot) {
       history.push(`/spots/${editedSpot.id}`)
+      onClick();
     }
   }
 

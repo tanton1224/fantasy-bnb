@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getOneSpot } from '../../store/selectedSpot'
-import { getSpotImages } from '../../store/images'
+import { getOneSpot } from '../../store/selectedSpot';
+import { getSpotImages } from '../../store/images';
 import EditSpotFormModal from "../EditSpotForm";
 import DeleteSpotModal from "../DeleteSpotModal";
 import { getAllSpotReviews } from "../../store/reviews";
