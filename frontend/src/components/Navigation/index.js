@@ -46,14 +46,16 @@ function Navigation({ isLoaded }){
             <NavLink exact to="/"><img className='logo' src={logo} /></NavLink>
           </div>
           <div className='nav-bar-right'>
-            <div className='create-spot-button-container'>
+            <div className='signed-in'>
               {sessionUser &&
-                <NavLink to='/spots/new'>
-                  <button>Become a Host</button>
+                <NavLink className="create-spot-link" to='/spots/new'>
+                  <div className='create-spot-button-container'>
+                    Become a Host
+                  </div>
                 </NavLink>
               }
+              {isLoaded && sessionLinks}
             </div>
-            {isLoaded && sessionLinks}
           </div>
         </div>
       </div>

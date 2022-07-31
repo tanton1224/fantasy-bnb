@@ -12,7 +12,6 @@ function AllSpots () {
 
   useEffect(() => {
     dispatch(getAllSpots())
-    // dispatch(getSpotImages(spot.id)) // come back to this, need to know if placeholders will work for images
   }, [dispatch])
 
   return (
@@ -20,7 +19,7 @@ function AllSpots () {
       <div className='spots-container'>
         {spots.map(spot => {
           return (
-            <NavLink key={spot.id} to={`/spots/${spot.id}`}>
+            <NavLink className="spot-link" key={spot.id} to={`/spots/${spot.id}`}>
               <div className="spot-container">
                 <div className="image-container">
                   <img src={`${spot?.previewImage}`} alt="Spot Image" />

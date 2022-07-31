@@ -1,6 +1,6 @@
-a:visited {
-  color: black;
+.spot-link {
   text-decoration: none;
+  color: #222222;
 }
 
 .page-container {
