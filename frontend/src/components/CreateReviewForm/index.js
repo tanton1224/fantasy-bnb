@@ -43,12 +43,14 @@ function CreateReviewForm ({ spotId, reviews }) {
       stars
     }
 
-    reviews.forEach(review => {
-      if (review.userId === user.id) {
-        newErrors.push("You have already reviewed this spot!")
-        console.log(newErrors)
-      }
-    })
+    if (reviews) {
+      reviews.forEach(review => {
+        if (review.userId === user.id) {
+          newErrors.push("You have already reviewed this spot!")
+        }
+      })
+    } 
+
 
     if (newErrors.length > 0) {
       setErrors(newErrors)

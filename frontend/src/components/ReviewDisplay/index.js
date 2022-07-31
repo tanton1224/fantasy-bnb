@@ -19,12 +19,12 @@ function ReviewDisplay ({spotId}) {
       {reviews && reviews.map((review) => (
           <div className="review-container">
             <div className="review-name-date">
-              {`${review.User.firstName} ${review.User.lastName}`}<i className="fa-solid fa-star"></i>{`${review.stars}`}
+              {`${review.User?.firstName} ${review.User?.lastName}`}<i className="fa-solid fa-star"></i>{`${review.stars}`}
             </div>
             <div className="review-content">
               {`${review.reviewContent}`}
             </div>
-            {user?.id === review.User.id && (<div className="delete-review-button-container">
+            {user?.id === review.User?.id && (<div className="delete-review-button-container">
               <button className="delete-review-button" onClick={() => {
                 dispatch(deleteYourReview(review.id, spotId));
                 history.push(`/spots/${spotId}`)

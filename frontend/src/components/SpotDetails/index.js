@@ -58,47 +58,54 @@ function SpotDetails () {
       {user?.id === spot?.ownerId && (
         <div className="owned-spot-buttons">
           <button onClick={() => setShowEditForm(!showEditForm)}>Edit Spot</button>
-          <DeleteSpotModal spotId={spot.id}/>
+          <DeleteSpotModal spotId={spot?.id}/>
         </div>
       )}
       {showEditForm && <EditSpotForm spot={spot} hideForm={() => setShowEditForm(false)} />}
       {spot && (
         <div className="column-container">
           <div className="left-column">
-            <h2 style={{ textAlign: "left" }}>{`${spot?.name} hosted by ${detailedSpot?.User.firstName} ${detailedSpot?.User.lastName}`}</h2>
-            <p>{spot?.description}</p>
+            <h2>{`${spot?.name} hosted by ${detailedSpot?.User.firstName} ${detailedSpot?.User.lastName}`}</h2>
+            <p className="spot-description">{spot?.description}</p>
+            <div className="spot-reviews-container">
+              <ReviewDisplay spotId={spotId} />
+              <CreateReviewForm spotId={spotId} reviews={reviews} />
+            </div>
           </div>
-          <div className="booking-creator-container">
-            <div className="booking-creator-info-holder">
-              <div className="booking-creator-main-info">
-                <span>
-                  <span className="booking-creator-price">{`$${spot.price} `}</span>
-                  <span className="booking-creator-night">night</span>
+          <div className="booking-sample-container">
+              <div className="booking-sample-main-info">
+                <span className="booking-sample-ppn">
+                  <span className="booking-sample-price">{`$${spot.price}`}</span>
+                  <span className="booking-sample-night">night</span>
                 </span>
                 <span>
                   <i className="fa-solid fa-star"></i>
-                  <span className="booking-creator-review-score">{extraSpotInfo.avgStarRating === null ? "No Reviews Yet - " : `${extraSpotInfo.avgStarRating} -`}</span>
-                  <span className="booking-creator-review-count">{`${extraSpotInfo.numReviews} reviews`}</span>
+                  <span className="booking-sample-review-score">{extraSpotInfo.avgStarRating === null ? "No Reviews Yet • " : `${extraSpotInfo.avgStarRating} •`}</span>
+                  <span className="booking-sample-review-count">{`${extraSpotInfo.numReviews} reviews`}</span>
                 </span>
               </div>
-              <div className="booking-creator-form-container">
-                <form className="booking-creator-form">
-                  <label>Check-In
-                    <input
-                      type="text"
-                      placeholder={`${today.getMonth() + 1}-${today.getDate()}-${today.getFullYear()}`}
-                    />
-                  </label>
-                </form>
+              <div className="booking-sample-message">
+                  You won't be charged yet.
               </div>
-            </div>
+              <div className="booking-sample-price-info">
+                <span style={{textDecoration: "underline"}}>{`$${spot.price} x 3 nights`}</span>
+                <span>{`$${spot.price * 3}`}</span>
+              </div>
+              <div className="booking-sample-clean-fee">
+                <span style={{textDecoration: "underline"}}>Cleaning Fee</span>
+                <span>$30</span>
+              </div>
+              <div className="booking-sample-service-fee">
+                <span style={{textDecoration: "underline"}}>Service Fee</span>
+                <span>$50</span>
+              </div>
+              <div className="booking-sample-total">
+                <span style={{fontWeight: "bold", fontSize: "large"}}>Total before tax</span>
+                <span style={{fontWeight: "bold", fontSize: "large"}}>{`$${(spot.price * 3) + 80}`}</span>
+              </div>
           </div>
         </div>
       )}
-      <div className="spot-reviews-container">
-        <ReviewDisplay spotId={spotId} />
-        <CreateReviewForm spotId={spotId} reviews={reviews} />
-      </div>
     </div>
   )
 }

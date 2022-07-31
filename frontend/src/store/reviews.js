@@ -66,7 +66,11 @@ const reviewsReducer = (state = {}, action) => {
       return newState;
     case CREATE_REVIEW:
       newState = {...state};
-      newState[action.spotId].push(action.review)
+      if (newState[action.spotId]) {
+        newState[action.spotId].push(action.review)
+      } else {
+        newState[action.spotId] = [action.review]
+      }
       return newState;
     case DELETE_REVIEW:
       newState = {...state};

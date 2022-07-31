@@ -1,11 +1,13 @@
 /* TODO Add site wide styles */
 
 @font-face {
-  /* font-family: "Airbnb Cereal LT";
-  src: url('./fonts/AirbnbCereal_W_Lt.otf'); */
-
   font-family: "Airbnb Cereal BD";
   src: url('./fonts/AirbnbCereal_W_Bd.otf');
+}
+
+@font-face {
+  font-family: "Airbnb Cereal LT";
+  src: url('./fonts/AirbnbCereal_W_Lt.otf');
 }
 
 .site-container {
