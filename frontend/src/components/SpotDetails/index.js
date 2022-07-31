@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getOneSpot } from '../../store/selectedSpot'
 import { getSpotImages } from '../../store/images'
-import EditSpotForm from "../EditSpotForm";
+import EditSpotFormModal from "../EditSpotForm";
 import DeleteSpotModal from "../DeleteSpotModal";
 import { getAllSpotReviews } from "../../store/reviews";
 import ReviewDisplay from "../ReviewDisplay";
@@ -57,11 +57,10 @@ function SpotDetails () {
       </div>
       {user?.id === spot?.ownerId && (
         <div className="owned-spot-buttons">
-          <button onClick={() => setShowEditForm(!showEditForm)}>Edit Spot</button>
+          <EditSpotFormModal spot={spot} />
           <DeleteSpotModal spotId={spot?.id}/>
         </div>
       )}
-      {showEditForm && <EditSpotForm spot={spot} hideForm={() => setShowEditForm(false)} />}
       {spot && (
         <div className="column-container">
           <div className="left-column">
