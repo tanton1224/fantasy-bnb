@@ -1,1 +1,90 @@
+.spot-details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.title-div {
+  width: 1120px;
+}
+
+.info-div {
+  width: 1120px;
+  margin-bottom: 20px;
+}
+
+.info-div > span {
+  margin-right: 3px;
+}
+
+.all-spot-images-container {
+  width: 1120px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 15px;
+}
+
+.big-spot-image-container {
+  width: 558px;
+  height: 558px;
+}
+
+.big-spot-image-container > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px 0px 0px 15px;
+}
+
+.small-images-container {
+  width: 558px;
+  height: 558px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.small-spot-image-div {
+  width: 277px;
+  height: 277px;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.small-img-1 {
+  border-radius: 0px 15px 0px 0px;
+}
+
+.small-img-3 {
+  border-radius: 0px 0px 15px 0px;
+}
+
+.small-spot-image-div > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.owned-spot-buttons {
+  width: 1120px;
+}
+
+.column-container {
+  width: 1120px;
+  display: flex;
+  flex-direction: row;
+
+}
+
+.left-column {
+  width: 560px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.left-column h2 {
+  width: 100%;
+  text-align: left;
+ }

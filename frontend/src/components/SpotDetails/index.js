@@ -8,6 +8,7 @@ import DeleteSpotModal from "../DeleteSpotModal";
 import { getAllSpotReviews } from "../../store/reviews";
 import ReviewDisplay from "../ReviewDisplay";
 import CreateReviewForm from "../CreateReviewForm";
+import './SpotDetails.css'
 
 function SpotDetails () {
   const { spotId } = useParams();
@@ -36,8 +37,8 @@ function SpotDetails () {
           <h1>{spot?.name}</h1>
         </div>
         <div className="info-div">
-          <span><i className="fa-solid fa-star"></i>{`${extraSpotInfo?.avgStarRating}`}</span>
-          <button>{`${extraSpotInfo?.numReviews} reviews`}</button>
+          <span><i className="fa-solid fa-star"></i>{`${extraSpotInfo?.avgStarRating}  •`}</span>
+          <span>{`${extraSpotInfo?.numReviews} reviews  •`}</span>
           <span>{`${spot?.city}, ${spot?.state}, ${spot?.country}`}</span>
         </div>
         </>
@@ -46,13 +47,13 @@ function SpotDetails () {
         <div className="big-spot-image-container">
           <img src={`${spot?.previewImage}`} alt="Something's gone wrong! Probably a bad URL! " />
         </div>
-        {spotImages && (
-          <div className="spot-image-div">
-            {spotImages?.map(image => (
-              <img src={`${image.url}`} alt="There should be an image here!"/>
-            ))}
-          </div>
-        )}
+        <div className="small-images-container">
+          {spotImages && spotImages?.map((image, i) => (
+            <div className="small-spot-image-div">
+              <img className={`small-img-${i}`} src={`${image.url}`} alt="There should be an image here!"/>
+            </div>
+          ))}
+        </div>
       </div>
       {user?.id === spot?.ownerId && (
         <div className="owned-spot-buttons">
@@ -64,7 +65,7 @@ function SpotDetails () {
       {spot && (
         <div className="column-container">
           <div className="left-column">
-            <h2>{`${spot?.name} hosted by ${detailedSpot?.User.firstName} ${detailedSpot?.User.lastName}`}</h2>
+            <h2 style={{ textAlign: "left" }}>{`${spot?.name} hosted by ${detailedSpot?.User.firstName} ${detailedSpot?.User.lastName}`}</h2>
             <p>{spot?.description}</p>
           </div>
           <div className="booking-creator-container">
