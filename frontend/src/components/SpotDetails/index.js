@@ -29,76 +29,76 @@ function SpotDetails () {
   const reviews = useSelector(state => state.reviews[spotId])
 
   return (
-    <>
-    {spot && (
-      <>
-      <div className="title-div">
-        <h1>{spot?.name}</h1>
+    <div className="spot-details-container">
+      {spot && (
+        <>
+        <div className="title-div">
+          <h1>{spot?.name}</h1>
+        </div>
+        <div className="info-div">
+          <span><i className="fa-solid fa-star"></i>{`${spot?.avgStarRating}`}</span>
+          <button>{`${spot?.numReviews} reviews`}</button>
+          <span>{`${spot?.city}, ${spot?.state}, ${spot?.country}`}</span>
+        </div>
+        </>
+      )}
+      <div className="all-spot-images-container">
+        <div className="big-spot-image-container">
+          <img src={`${spot?.previewImage}`} alt="Something's gone wrong! Probably a bad URL! " />
+        </div>
+        {spotImages && (
+          <div className="spot-image-div">
+            {spotImages?.map(image => (
+              <img src={`${image.url}`} alt="There should be an image here!"/>
+            ))}
+          </div>
+        )}
       </div>
-      <div className="info-div">
-        <span><i className="fa-solid fa-star"></i>{`${spot?.avgStarRating}`}</span>
-        <button>{`${spot?.numReviews} reviews`}</button>
-        <span>{`${spot?.city}, ${spot?.state}, ${spot?.country}`}</span>
-      </div>
-      </>
-    )}
-    <div className="all-spot-images-container">
-      <div className="big-spot-image-container">
-        <img src={`${spot?.previewImage}`} alt="Something's gone wrong!" />
-      </div>
-      {spotImages && (
-        <div className="spot-image-div">
-          {spotImages?.map(image => (
-            <img src={`${image.url}`} alt="There should be an image here!"/>
-          ))}
+      {user?.id === spot?.ownerId && (
+        <div className="owned-spot-buttons">
+          <button onClick={() => setShowEditForm(!showEditForm)}>Edit Spot</button>
+          <DeleteSpotModal spotId={spot.id}/>
         </div>
       )}
-    </div>
-    {user?.id === spot?.ownerId && (
-      <div className="owned-spot-buttons">
-        <button onClick={() => setShowEditForm(!showEditForm)}>Edit Spot</button>
-        <DeleteSpotModal spotId={spot.id}/>
-      </div>
-    )}
-    {showEditForm && <EditSpotForm spot={spot} hideForm={() => setShowEditForm(false)} />}
-    {spot && (
-      <div className="column-container">
-        <div className="left-column">
-          <h2>{`${spot?.name} hosted by ${detailedSpot?.User.firstName} ${detailedSpot?.User.lastName}`}</h2>
-          <p>{spot?.description}</p>
-        </div>
-        <div className="booking-creator-container">
-          <div className="booking-creator-info-holder">
-            <div className="booking-creator-main-info">
-              <span>
-                <span className="booking-creator-price">{`$${spot.price} `}</span>
-                <span className="booking-creator-night">night</span>
-              </span>
-              <span>
-                <i className="fa-solid fa-star"></i>
-                <span className="booking-creator-review-score">{`${extraSpotInfo.avgStarRating} -`}</span>
-                <span className="booking-creator-review-count">{`${extraSpotInfo.numReviews} reviews`}</span>
-              </span>
-            </div>
-            <div className="booking-creator-form-container">
-              <form className="booking-creator-form">
-                <label>Check-In
-                  <input
-                    type="text"
-                    placeholder={`${today.getMonth() + 1}-${today.getDate()}-${today.getFullYear()}`}
-                  />
-                </label>
-              </form>
+      {showEditForm && <EditSpotForm spot={spot} hideForm={() => setShowEditForm(false)} />}
+      {spot && (
+        <div className="column-container">
+          <div className="left-column">
+            <h2>{`${spot?.name} hosted by ${detailedSpot?.User.firstName} ${detailedSpot?.User.lastName}`}</h2>
+            <p>{spot?.description}</p>
+          </div>
+          <div className="booking-creator-container">
+            <div className="booking-creator-info-holder">
+              <div className="booking-creator-main-info">
+                <span>
+                  <span className="booking-creator-price">{`$${spot.price} `}</span>
+                  <span className="booking-creator-night">night</span>
+                </span>
+                <span>
+                  <i className="fa-solid fa-star"></i>
+                  <span className="booking-creator-review-score">{extraSpotInfo.avgStarRating === null ? "No Reviews Yet - " : `${extraSpotInfo.avgStarRating} -`}</span>
+                  <span className="booking-creator-review-count">{`${extraSpotInfo.numReviews} reviews`}</span>
+                </span>
+              </div>
+              <div className="booking-creator-form-container">
+                <form className="booking-creator-form">
+                  <label>Check-In
+                    <input
+                      type="text"
+                      placeholder={`${today.getMonth() + 1}-${today.getDate()}-${today.getFullYear()}`}
+                    />
+                  </label>
+                </form>
+              </div>
             </div>
           </div>
         </div>
+      )}
+      <div className="spot-reviews-container">
+        <ReviewDisplay spotId={spotId} />
+        <CreateReviewForm spotId={spotId} reviews={reviews} />
       </div>
-    )}
-    <div className="spot-reviews-container">
-      <ReviewDisplay spotId={spotId} />
-      <CreateReviewForm spotId={spotId} reviews={reviews} />
     </div>
-    </>
   )
 }
 

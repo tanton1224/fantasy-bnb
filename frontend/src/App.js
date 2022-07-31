@@ -18,7 +18,6 @@ function App() {
 
   return (
     <div className="site-container" >
-
       <Navigation isLoaded={isLoaded} />
       <div className="content">
         {isLoaded && (

@@ -1,6 +1,20 @@
 /* TODO Add site wide styles */
 
+@font-face {
+  /* font-family: "Airbnb Cereal LT";
+  src: url('./fonts/AirbnbCereal_W_Lt.otf'); */
+
+  font-family: "Airbnb Cereal BD";
+  src: url('./fonts/AirbnbCereal_W_Bd.otf');
+}
+
+.site-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 body {
   margin: 0;
-  font-family: sans-serif;
+  font-family: "Airbnb Cereal BD";
 }

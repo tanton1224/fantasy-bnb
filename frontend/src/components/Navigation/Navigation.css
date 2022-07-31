@@ -1,7 +1,19 @@
-.nav-bar {
+.nav-container {
   width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.nav-bar-container {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-bar {
+  width: 1580px;
+  height: 60px;
   margin: 0;
-  border-bottom: 1px solid black;
   position: sticky;
   top: 0;
   display: flex;
@@ -9,4 +21,28 @@
   align-items: center;
   padding: 15px;
   background-color: #FFFFFF
+}
+
+.nav-bar-bar {
+  border: 1px #EEEEEE solid;
+}
+
+.nav-bar-left img {
+  width: 120px;
+  height: 40px;
+}
+
+.nav-bar-right {
+  display: flex;
+  justify-content: center;
+}
+
+.menu-button {
+  position: relative;
+  width: 70px;
+  height: 40px;
+}
+
+.fa-bars {
+  height: px;
 }

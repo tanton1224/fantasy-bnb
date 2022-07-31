@@ -16,24 +16,26 @@ function AllSpots () {
   }, [dispatch])
 
   return (
-    <div className='spots-container'>
-      {spots.map(spot => {
-        return (
-          <NavLink key={spot.id} to={`/spots/${spot.id}`}>
-            <div className="spot-container">
-              <div className="image-container">
-                <img src={`${spot?.previewImage}`} alt="Spot Image" />
-              </div>
-              <div className='info-container'>
-                <div className='top-spot-info-container'>
-                  <p style={{fontWeight: "bold"}}>{`${spot.city}, ${spot.state}`}</p><p><i className='fa-solid fa-star'></i>{`${spot.avgStarRating}`} </p>
+    <div className='page-container'>
+      <div className='spots-container'>
+        {spots.map(spot => {
+          return (
+            <NavLink key={spot.id} to={`/spots/${spot.id}`}>
+              <div className="spot-container">
+                <div className="image-container">
+                  <img src={`${spot?.previewImage}`} alt="Spot Image" />
                 </div>
-                <p>{`$${spot.price} night`}</p>
+                <div className='info-container'>
+                  <div className='top-spot-info-container'>
+                    <p style={{fontWeight: "bold"}}>{`${spot.city}, ${spot.state}`}</p><p><i className='fa-solid fa-star'></i>{`${spot.avgStarRating}`} </p>
+                  </div>
+                  <p>{`$${spot.price} night`}</p>
+                </div>
               </div>
-            </div>
-          </NavLink>
-        )
-      })}
+            </NavLink>
+          )
+        })}
+      </div>
     </div>
   )
 }

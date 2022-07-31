@@ -14,6 +14,7 @@ function CreateSpotForm () {
   const [ name, setName ] = useState('');
   const [ description, setDescription ] = useState('');
   const [ price, setPrice ] = useState('');
+  const [ previewImage, setPreviewImage ] = useState('');
   const [ errors, setErrors ] = useState([]);
 
   useEffect(() => {
@@ -58,7 +59,8 @@ function CreateSpotForm () {
       country,
       name,
       description,
-      price
+      price,
+      previewImage
     };
 
     let createdSpot = await dispatch(createSpotThunk(payload));
@@ -70,6 +72,7 @@ function CreateSpotForm () {
       setName("")
       setDescription("")
       setPrice("")
+      setPreviewImage("")
       history.push("/");
     }
   }
@@ -127,6 +130,12 @@ function CreateSpotForm () {
           min="1"
           value={price}
           onChange={e => setPrice(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder='Preview Image URL'
+          value={previewImage}
+          onChange={e => setPreviewImage(e.target.value)}
         />
         <button type="submit" disabled={errors.length > 0}>Submit</button>
       </form>

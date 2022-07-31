@@ -3,9 +3,17 @@ a:visited {
   text-decoration: none;
 }
 
-.spots-container {
+.page-container {
   display: flex;
   justify-content: center;
+}
+
+.spots-container {
+  display: flex;
+  /* justify-content: center; */
+  flex-wrap: wrap;
+  width: 1600px;
+  margin-top: 20px;
 }
 
 .image-container {

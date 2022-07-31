@@ -7,13 +7,14 @@ import './EditSpotForm.css'
 function EditSpotForm ({ spot, hideForm }) {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [ address, setAddress ] = useState(spot.address)
-  const [ city, setCity ] = useState(spot.city)
-  const [ state, setState ] = useState(spot.state)
-  const [ country, setCountry ] = useState(spot.country)
-  const [ name, setName ] = useState(spot.name)
-  const [ description, setDescription ] = useState(spot.description)
-  const [ price, setPrice ] = useState(spot.price)
+  const [ address, setAddress ] = useState(spot.address);
+  const [ city, setCity ] = useState(spot.city);
+  const [ state, setState ] = useState(spot.state);
+  const [ country, setCountry ] = useState(spot.country);
+  const [ name, setName ] = useState(spot.name);
+  const [ description, setDescription ] = useState(spot.description);
+  const [ price, setPrice ] = useState(spot.price);
+  const [ previewImage, setPreviewImage ] = useState(spot.previewImage);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -26,6 +27,7 @@ function EditSpotForm ({ spot, hideForm }) {
       name,
       description,
       price,
+      previewImage,
     };
 
     let editedSpot = await dispatch(editSpotThunk(payload, spot.id));
@@ -94,6 +96,14 @@ function EditSpotForm ({ spot, hideForm }) {
             min="1"
             value={price}
             onChange={e => setPrice(e.target.value)}
+          />
+        </label>
+        <label>Preview Image
+          <input
+            type="text"
+            placeholder={spot.previewImage}
+            value={previewImage}
+            onChange={e => setPreviewImage(e.target.value)}
           />
         </label>
         <button type="submit">Submit</button>
