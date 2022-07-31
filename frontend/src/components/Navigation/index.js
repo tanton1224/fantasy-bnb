@@ -21,18 +21,18 @@ function Navigation({ isLoaded }){
   } else {
     sessionLinks = (
       <div className='not-signed-in'>
-        <button className='demo-login-button' onClick={() => {
+        <div className='demo-login-button' onClick={() => {
           dispatch(demoLogin())
-          }} >Demo User Login</button>
+          }} >Demo User Login</div>
         <button className='menu-button' onClick={() => setShowMenu(!showMenu)}>
-          <i className="fa-solid fa-bars"></i>
-          <i className="fa-solid fa-circle-user"></i>
+          <i className="fa-solid fa-bars fa-lg"></i>
+          <i className="fa-solid fa-circle-user fa-2xl"></i>
         </button>
         {showMenu && (
-          <>
+          <div className='login-and-signup-buttons'>
             <LoginFormModal />
             <SignupFormModal />
-          </>
+          </div>
         )}
       </div>
     );
