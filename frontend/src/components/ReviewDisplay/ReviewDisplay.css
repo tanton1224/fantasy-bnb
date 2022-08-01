@@ -1,0 +1,35 @@
+.reviews-display {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+.review-container {
+  width: 550px;
+  margin-bottom: 30px;
+}
+
+.review-name-score {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.review-content {
+  font-family: "Airbnb Cereal LT";
+}
+
+.delete-review-button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.delete-review-button {
+  height: 30px;
+  width: 80px;
+  border: 0;
+  background: linear-gradient(0.25turn, #E61E4D, #D70666);
+  color: white;
+  border-radius: 15px;
+  font-family: "Airbnb Cereal LT";
+}

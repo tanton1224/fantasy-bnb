@@ -1,8 +1,3 @@
-h2 {
-  display: flex;
-  justify-content: center;
-}
-
 .login-form {
   display: flex;
   flex-direction: column;
@@ -10,12 +5,32 @@ h2 {
   align-items: space-between;
   border-radius: 10px;
 }
-.input-container {
-  width: 100%;
-  margin: 10px;
+
+.login-title {
+  text-align: center;
 }
 
-.login-form > input {
+.login-inputs-container input {
   width: 100%;
-  justify-content: space-between;
+  height: 40px;
+  border: 2px solid #EDEDED;
+  border-radius: 3px;
+}
+
+.login-inputs-container input::placeholder {
+  font-family: "Airbnb Cereal LT";
+  font-size: 16px;
+  padding-left: 8px;
+}
+
+.login-submit-button {
+  margin-top: 15px;
+  width: 100%;
+  height: 48px;
+  border-radius: 8px;
+  border: 0;
+  background: linear-gradient(0.25turn, #E61E4D, #D70666);
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
 }

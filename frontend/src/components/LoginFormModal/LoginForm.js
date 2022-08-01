@@ -21,35 +21,39 @@ function LoginForm() {
   };
 
   return (
-    <>
+    <div className="login-form-container">
     <h2 className="login-title">Login</h2>
       <form className="login-form" onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <div className="input-container">
-          <input
-            type="text"
-            value={credential}
-            placeholder="Username or Email"
-            onChange={(e) => setCredential(e.target.value)}
-            required
-          />
+        <div className="login-inputs-container">
+          <div className="login-input">
+            <input
+              type="text"
+              value={credential}
+              placeholder="Username or Email"
+              onChange={(e) => setCredential(e.target.value)}
+              required
+            />
+          </div>
+          <div className="login-input">
+            <input
+              type="password"
+              value={password}
+              placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
         </div>
-        <div className="input-container">
-          <input
-            type="password"
-            value={password}
-            placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Log In</button>
+        {errors.length > 0 && (
+          <ul>
+            {errors.map((error, idx) => (
+              <li key={idx}>{error}</li>
+            ))}
+          </ul>
+        )}
+        <button className="login-submit-button" type="submit">Log In</button>
       </form>
-    </>
+    </div>
   );
 }
 

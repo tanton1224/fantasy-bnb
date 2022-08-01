@@ -1,0 +1,166 @@
+.spot-details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title-div {
+  width: 1120px;
+}
+
+h1 {
+  color: #222222;
+}
+
+.info-div {
+  width: 1120px;
+  margin-bottom: 20px;
+}
+
+.info-div > span {
+  margin-right: 3px;
+  font-family: "Airbnb Cereal LT";
+}
+
+.all-spot-images-container {
+  width: 1120px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.big-spot-image-container {
+  width: 558px;
+  height: 558px;
+}
+
+.big-spot-image-container > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px 0px 0px 15px;
+}
+
+.small-images-container {
+  width: 558px;
+  height: 558px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.small-spot-image-div {
+  width: 277px;
+  height: 277px;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.small-img-1 {
+  border-radius: 0px 15px 0px 0px;
+}
+
+.small-img-3 {
+  border-radius: 0px 0px 15px 0px;
+}
+
+.small-spot-image-div > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.owned-spot-buttons {
+  width: 1120px;
+  margin-bottom: 10px;
+}
+
+.column-container {
+  width: 1120px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.left-column {
+  width: 560px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.left-column h2 {
+  width: 100%;
+  text-align: left;
+  margin-top: 5px;
+ }
+
+ .spot-description {
+  font-family: "Airbnb Cereal LT";
+ }
+
+ .booking-sample-container {
+  width: 348px;
+  height: 310px;
+  border: 2px solid #EEEEEE;
+  border-radius: 15px;
+  padding: 24px;
+  background-color: white;
+  font-family: "Airbnb Cereal LT";
+  margin-bottom: 40px;
+ }
+
+.booking-sample-main-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.booking-sample-ppn {
+  display: flex;
+  align-items: flex-end;
+}
+
+.booking-sample-price {
+  font-size: 20px;
+  margin-right: 4px;
+  color: #222222;
+}
+
+.booking-sample-review-score {
+  margin-right: 3px;
+}
+
+.booking-sample-message {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.booking-sample-price-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.booking-sample-clean-fee {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.booking-sample-service-fee {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  border-bottom: 1px solid lightgray;
+}
+
+.booking-sample-total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}

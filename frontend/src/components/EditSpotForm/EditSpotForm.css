@@ -1,0 +1,52 @@
+.edit-spot-button {
+  width: 100px;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: white;
+  font-family: "Airbnb Cereal LT";
+  font-size: 15px;
+  margin-left: 20px;
+}
+
+.edit-spot-button:hover {
+  background-color: #f7f7f7;
+}
+
+.edit-spot-form-container h2 {
+  text-align: center;
+}
+
+.edit-spot-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-spot-form input {
+  width: 100%;
+  height: 40px;
+  border: 2px solid #EDEDED;
+  border-radius: 3px;
+  font-family: "Airbnb Cereal LT";
+  font-size: 16px;
+}
+
+.edit-spot-form textarea {
+  width: 570px;
+  height: 100px;
+  font-family: "Airbnb Cereal LT";
+  font-size: 16px;
+  border: 2px solid #EDEDED;
+}
+
+.edit-spot-submit-button {
+  margin-top: 15px;
+  width: 100%;
+  height: 48px;
+  border-radius: 8px;
+  border: 0;
+  background: linear-gradient(0.25turn, #E61E4D, #D70666);
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+}
