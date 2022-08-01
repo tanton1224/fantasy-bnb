@@ -12,3 +12,19 @@
 .delete-spot-button:hover {
   background-color: #f7f7f7;
 }
+
+.delete-spot-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete-buttons-container {
+  display: flex;
+  width: 568px;
+}
+
+.yes-delete-button {
+  width: 50%;
+}
