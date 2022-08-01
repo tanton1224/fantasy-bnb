@@ -59,10 +59,9 @@ router.get(
 
     const spotById = await Spot.findOne({
       where: { id: spotId },
-      include: [ { model: User }, { model: Image, attributes: ['url'], where: {
-        reviewId: null
-      } } ]
+      include: [ { model: User }, { model: Image, attributes: ['url'] } ]
     })
+    console.log(spotById)
 
     const numReviews = await Review.count({
       where: {
@@ -115,21 +114,22 @@ router.put(
       return res.json(err)
     }
 
-    let { address, city, state, country, lat, lng, name, description, price } = req.body
+    let { address, city, state, country, lat, lng, name, description, price, previewImage } = req.body
 
-    spotById.address = address
-    spotById.city = city
-    spotById.state = state
-    spotById.country = country
+    spotById.address = address;
+    spotById.city = city;
+    spotById.state = state;
+    spotById.country = country;
     if (lat) {
-      spotById.lat = lat
-    }
+      spotById.lat = lat;
+    };
     if (lng) {
-      spotById.lng = lng
-    }
-    spotById.name = name
-    spotById.description = description
-    spotById.price = price
+      spotById.lng = lng;
+    };
+    spotById.name = name;
+    spotById.description = description;
+    spotById.price = price;
+    spotById.previewImage = previewImage;
 
     await spotById.save();
     res.json(spotById);

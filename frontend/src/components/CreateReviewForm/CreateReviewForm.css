@@ -1,0 +1,45 @@
+.review-form-container {
+  width: 550px;
+  display: flex;
+  flex-direction: column;
+}
+
+.review-form {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+}
+
+.review-form textarea {
+  width: 100%;
+  font-family: "Airbnb Cereal LT";
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.review-form textarea::placeholder {
+  font-family: "Airbnb Cereal LT";
+  font-size: 16px;
+  padding-left: 8px;
+}
+
+.stars-input-and-label {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.stars-input-and-label input {
+  margin-left: 5px;
+  height: 24px;
+}
+
+.stars-input-and-label button {
+  width: 120px;
+  height: 30px;
+  border: 0;
+  background: linear-gradient(0.25turn, #E61E4D, #D70666);
+  color: white;
+  border-radius: 15px;
+  font-family: "Airbnb Cereal LT";
+}
