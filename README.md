@@ -31,4 +31,4 @@ Features yet to be implemented include the ability to
 
 Access to the sign up, log in, and demo user are located on the navbar.
 
-![image](![image](https://user-images.githubusercontent.com/101833447/182082834-654da3fc-1400-4599-87b6-1b631dfd7780.png)
+![image](https://user-images.githubusercontent.com/101833447/182082834-654da3fc-1400-4599-87b6-1b631dfd7780.png)
