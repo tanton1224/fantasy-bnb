@@ -36,9 +36,6 @@ function SignupForm() {
     if (lastName.length <= 0) {
       newErrors.push("Last name is required")
     }
-    if (password !== confirmPassword) {
-      newErrors.push("Password and confirm password must match")
-    }
 
     if (newErrors.length) {
       setErrors(newErrors)
@@ -67,7 +64,7 @@ function SignupForm() {
       <h2>Sign Up</h2>
         <form className="sign-up-form" onSubmit={handleSubmit}>
           <input
-            type="text"
+            type="email"
             value={email}
             placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
