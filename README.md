@@ -8,7 +8,7 @@ Features yet to be implemented include the ability to
 ## Wiki Link
 - [API routes](https://github.com/tanton1224/fantasy-bnb/wiki/API-Routes)
 - [Database Schema](https://github.com/tanton1224/fantasy-bnb/wiki#database-schema)
-- [Features List](https://github.com/tanton1224/fantasy-bnb/wiki#feature-list)
+- [Features List](https://github.com/tanton1224/fantasy-bnb/wiki/Feature-List)
 - [Redux State Shape](https://github.com/tanton1224/fantasy-bnb/wiki/Redux-State-Shape)
 
 ## Technologies
