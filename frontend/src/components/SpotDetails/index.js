@@ -67,7 +67,7 @@ function SpotDetails () {
             <h2>{`${spot?.name} hosted by ${detailedSpot?.User.firstName} ${detailedSpot?.User.lastName}`}</h2>
             <p className="spot-description">{spot?.description}</p>
             <div className="spot-reviews-container">
-              <ReviewDisplay spotId={spotId} />
+              <ReviewDisplay spotId={spotId} extraSpotInfo={extraSpotInfo} />
               <CreateReviewForm spotId={spotId} reviews={reviews} />
             </div>
           </div>

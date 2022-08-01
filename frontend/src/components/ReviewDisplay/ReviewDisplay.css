@@ -1,0 +1,20 @@
+.reviews-display {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+.review-container {
+  width: 550px;
+  margin-bottom: 30px;
+}
+
+.review-name-score {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.review-content {
+  font-family: "Airbnb Cereal LT";
+}
