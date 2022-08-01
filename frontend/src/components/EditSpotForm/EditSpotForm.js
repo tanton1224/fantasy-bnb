@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom'
 import { editSpotThunk } from '../../store/spots'; // gotta make this
@@ -15,6 +15,38 @@ function EditSpotForm ({ spot, onClick }) {
   const [ description, setDescription ] = useState(spot.description);
   const [ price, setPrice ] = useState(spot.price);
   const [ previewImage, setPreviewImage ] = useState(spot.previewImage);
+  const [ errors, setErrors ] = useState([]);
+  useEffect(() => {
+    const newErrors = [];
+
+    if (address.length <= 0) {
+      newErrors.push("Address is required")
+    }
+    if (city.length <= 0) {
+      newErrors.push("City is required")
+    }
+    if (state.length <= 0) {
+      newErrors.push("State is required")
+    }
+    if (country.length <= 0) {
+      newErrors.push("Country is required")
+    }
+    if (name.length <= 0) {
+      newErrors.push("Name is required")
+    }
+    if (description.length <= 0) {
+      newErrors.push("Description is required")
+    }
+    if (price.length <= 0) {
+      newErrors.push("Price is required and must be above zero")
+    }
+
+    if (newErrors.length) {
+      setErrors(newErrors);
+    } else {
+      setErrors([])
+    }
+  }, [address, city, state, country, name, description, price])
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -41,10 +73,10 @@ function EditSpotForm ({ spot, onClick }) {
     <section className='edit-spot-form-container'>
       <h2>Edit your Spot</h2>
       <form className="edit-spot-form" onSubmit={onSubmit}>
-        <label>Street address
+        <label>Address
           <input
             type="text"
-            placeholder={spot.address}
+            placeholder={"Street Address"}
             value={address}
             onChange={e => setAddress(e.target.value)}
           />
@@ -52,7 +84,7 @@ function EditSpotForm ({ spot, onClick }) {
         <label>City
           <input
             type="text"
-            placeholder={spot.city}
+            placeholder={"City"}
             value={city}
             onChange={e => setCity(e.target.value)}
           />
@@ -60,7 +92,7 @@ function EditSpotForm ({ spot, onClick }) {
         <label>State
           <input
             type="text"
-            placeholder={spot.state}
+            placeholder={"State"}
             value={state}
             onChange={e => setState(e.target.value)}
           />
@@ -68,22 +100,22 @@ function EditSpotForm ({ spot, onClick }) {
         <label>Country
           <input
             type="text"
-            placeholder={spot.country}
+            placeholder={"Country"}
             value={country}
             onChange={e => setCountry(e.target.value)}
           />
-        </label>Name
-        <label>
+        </label>
+        <label>Name
           <input
             type="text"
-            placeholder={spot.name}
+            placeholder={"Name"}
             value={name}
             onChange={e => setName(e.target.value)}
           />
         </label>
         <label>Description
           <textarea
-            placeholder={spot.description}
+            placeholder={"Description"}
             value={description}
             onChange={e => setDescription(e.target.value)}
             style={{resize: "none"}}
@@ -92,21 +124,28 @@ function EditSpotForm ({ spot, onClick }) {
         <label>Price
           <input
             type="number"
-            placeholder={spot.price}
+            placeholder={"Price"}
             min="1"
             value={price}
             onChange={e => setPrice(e.target.value)}
           />
         </label>
-        <label>Preview Image
+        <label>Preview Image URL
           <input
             type="text"
-            placeholder={spot.previewImage}
+            placeholder={"Preview Image URL"}
             value={previewImage}
             onChange={e => setPreviewImage(e.target.value)}
           />
         </label>
-        <button type="submit">Submit</button>
+          {errors.length > 0 && (
+            <ul className='create-spot-form-errors'>
+              {errors.map(error => {
+                return <li>{`${error}`}</li>
+              })}
+            </ul>
+          )}
+        <button className='edit-spot-submit-button' type="submit">Submit</button>
       </form>
     </section>
   )
