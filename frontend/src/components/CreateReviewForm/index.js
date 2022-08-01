@@ -49,7 +49,7 @@ function CreateReviewForm ({ spotId, reviews }) {
           newErrors.push("You have already reviewed this spot!")
         }
       })
-    } 
+    }
 
 
     if (newErrors.length > 0) {
@@ -69,24 +69,26 @@ function CreateReviewForm ({ spotId, reviews }) {
           return <li>{`${error}`}</li>
         })}
       </ul>)}
-      <form className="review-form"
-        onSubmit={onSubmit}
-      >
+      <form className="review-form"  onSubmit={onSubmit}>
         <textarea
           placeholder="Write your review here..."
           value={review}
           onChange={e => setReview(e.target.value)}
           style={{resize: "none"}}
         />
-        <input
-          type="number"
-          placeholder="How many stars out of 5?"
-          min="1"
-          max="5"
-          value={stars}
-          onChange={e => setStars(e.target.value)}
-        />
-        <button type="submit" disabled={errors.length > 0}>Submit Review</button>
+        <div className="stars-input-and-label">
+          <label>Stars:
+            <input
+              type="number"
+              placeholder="How many stars out of 5?"
+              min="1"
+              max="5"
+              value={stars}
+              onChange={e => setStars(e.target.value)}
+            />
+          </label>
+          <button type="submit" disabled={errors.length > 0}>Submit Review</button>
+        </div>
       </form>
     </div>
   )

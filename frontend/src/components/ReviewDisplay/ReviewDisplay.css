@@ -18,3 +18,13 @@
 .review-content {
   font-family: "Airbnb Cereal LT";
 }
+
+.delete-review-button {
+  height: 30px;
+  width: 80px;
+  border: 0;
+  background: linear-gradient(0.25turn, #E61E4D, #D70666);
+  color: white;
+  border-radius: 15px;
+  font-family: "Airbnb Cereal LT";
+}

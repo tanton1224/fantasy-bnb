@@ -37,7 +37,7 @@ function SpotDetails () {
           <h1>{spot?.name}</h1>
         </div>
         <div className="info-div">
-          <span><i className="fa-solid fa-star"></i>{`${extraSpotInfo?.avgStarRating}  •`}</span>
+          <span><i className="fa-solid fa-star"></i>{`${extraSpotInfo?.avgStarRating.toFixed(2)}  •`}</span>
           <span>{`${extraSpotInfo?.numReviews} reviews  •`}</span>
           <span>{`${spot?.city}, ${spot?.state}, ${spot?.country}`}</span>
         </div>
