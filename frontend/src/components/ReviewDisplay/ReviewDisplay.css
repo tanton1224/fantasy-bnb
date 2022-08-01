@@ -19,6 +19,11 @@
   font-family: "Airbnb Cereal LT";
 }
 
+.delete-review-button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .delete-review-button {
   height: 30px;
   width: 80px;

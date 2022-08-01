@@ -37,7 +37,7 @@ function SpotDetails () {
           <h1>{spot?.name}</h1>
         </div>
         <div className="info-div">
-          <span><i className="fa-solid fa-star"></i>{`${extraSpotInfo?.avgStarRating.toFixed(2)}  •`}</span>
+          <span><i className="fa-solid fa-star"></i>{extraSpotInfo.avgStarRating === null ? "No Reviews Yet • " : `${extraSpotInfo?.avgStarRating?.toFixed(2)}  •`}</span>
           <span>{`${extraSpotInfo?.numReviews} reviews  •`}</span>
           <span>{`${spot?.city}, ${spot?.state}, ${spot?.country}`}</span>
         </div>
@@ -79,7 +79,7 @@ function SpotDetails () {
                 </span>
                 <span>
                   <i className="fa-solid fa-star"></i>
-                  <span className="booking-sample-review-score">{extraSpotInfo.avgStarRating === null ? "No Reviews Yet • " : `${extraSpotInfo.avgStarRating} •`}</span>
+                  <span className="booking-sample-review-score">{extraSpotInfo.avgStarRating === null ? "No Reviews Yet • " : `${extraSpotInfo.avgStarRating?.toFixed(2)} •`}</span>
                   <span className="booking-sample-review-count">{`${extraSpotInfo.numReviews} reviews`}</span>
                 </span>
               </div>

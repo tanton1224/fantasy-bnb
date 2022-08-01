@@ -17,7 +17,7 @@ function ReviewDisplay ({spotId, extraSpotInfo}) {
 
   return isLoaded && (
     <div className="reviews-display">
-      <h3><i className="fa-solid fa-star"></i>{`${extraSpotInfo.avgStarRating?.toFixed(1)} • ${extraSpotInfo?.numReviews} Reviews`}</h3>
+      <h3><i className="fa-solid fa-star"></i>{extraSpotInfo.avgStarRating === null ? "No Reviews Yet •" : `${extraSpotInfo.avgStarRating?.toFixed(2)} •`}{` ${extraSpotInfo?.numReviews} Reviews`}</h3>
       {reviews && reviews.map((review) => (
           <div className="review-container">
             <div className="review-name-score">
@@ -35,7 +35,7 @@ function ReviewDisplay ({spotId, extraSpotInfo}) {
               <button className="delete-review-button" onClick={() => {
                 dispatch(deleteYourReview(review.id, spotId));
                 history.push(`/spots/${spotId}`)
-                }}>Delete?</button>
+                }}>Delete</button>
             </div>)}
           </div>
       ))}
