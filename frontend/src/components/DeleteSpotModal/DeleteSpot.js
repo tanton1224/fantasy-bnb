@@ -9,7 +9,7 @@ function DeleteSpot ({ spotId, onClick }) {
 
   const onDelete = () => {
     dispatch(deleteSpotThunk(spotId));
-    history.push('/')
+    // history.push('/')
   }
 
   return (

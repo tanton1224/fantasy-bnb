@@ -31,7 +31,7 @@ router.post(
 
     if (spotById.ownerId !==  req.user.id) {
       let err = {}
-      err.message = "This isn't your spot to add ajn image to!"
+      err.message = "This isn't your spot to add an image to!"
       err.statusCode = 403;
       res.statusCode = 403;
       return res.json(err)

@@ -16,6 +16,7 @@ function EditSpotForm ({ spot, onClick }) {
   const [ price, setPrice ] = useState(spot.price);
   const [ previewImage, setPreviewImage ] = useState(spot.previewImage);
   const [ errors, setErrors ] = useState([]);
+  
   useEffect(() => {
     const newErrors = [];
 
@@ -65,7 +66,7 @@ function EditSpotForm ({ spot, onClick }) {
     let editedSpot = await dispatch(editSpotThunk(payload, spot.id));
     if (editedSpot) {
       history.push(`/spots/${editedSpot.id}`)
-      onClick();
+      onClick(); // close the modal
     }
   }
 
