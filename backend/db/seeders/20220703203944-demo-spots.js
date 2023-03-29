@@ -1,9 +1,15 @@
 'use strict';
 
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA;  // define schema in options object
+}
+
 const { Op } = require('sequelize')
 
 module.exports = {
   async up (queryInterface, Sequelize) {
+    options.tableName = 'Spots'
     return queryInterface.bulkInsert('Spots', [
       {
         ownerId: 1,
