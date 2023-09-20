@@ -10,7 +10,7 @@ const { Op } = require('sequelize')
 module.exports = {
   async up (queryInterface, Sequelize) {
     options.tableName = 'Spots'
-    return queryInterface.bulkInsert('Spots', [
+    return queryInterface.bulkInsert(options, [
       {
         ownerId: 1,
         address: "Who ever really knows?",
@@ -89,7 +89,8 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-     return queryInterface.bulkDelete('Spots', {
+    options.tableName = 'Spots'
+     return queryInterface.bulkDelete(options, {
       address: { [Op.in]: ["123 Disney Lane", "100 Waverly Place", "5200 Hogwarts Drive"] }
     }, {});
   }

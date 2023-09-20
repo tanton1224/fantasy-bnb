@@ -8,7 +8,7 @@ if (process.env.NODE_ENV === 'production') {
 module.exports = {
   async up (queryInterface, Sequelize) {
     options.tableName = 'Bookings'
-     return await queryInterface.bulkInsert('Bookings', [
+     return await queryInterface.bulkInsert(options, [
       {
         spotId: 3,
         startDate: "2022-09-10",
@@ -32,7 +32,8 @@ module.exports = {
 
   async down (queryInterface, Sequelize) {
      const Op = Sequelize.Op;
-     return queryInterface.bulkDelete('Bookings', {
+     options.tableName = 'Bookings'
+     return queryInterface.bulkDelete(options, {
        spotId: { [Op.in]: [1, 2, 3] }
      }, {})
   }
